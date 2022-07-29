@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* Imported the font "Inter" from the google font library. */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* To make it easier to access certain values and change them globally,
+            a root style system has been created. Mainly for colors, fonts, etc. */
+        :root {
+            --bkg: #00A9A5;
+            --txt: #fff;
+            --txt2: #424242;
+            --font1: 'Inter', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+        }
+
+        /* The error element styling */
+        .error {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+            gap: 24px;
+            margin-top: 25px;
+        }
+
+        .error img {
+            width: 775px;
+        }
+
+        .error h1 {
+            font-family: var(--font1);
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--txt2);
+            line-height: 34px;
+        }
+        .error button {
+            padding: 14px 28px;
+            border-radius: 8px;
+            border: none;
+            background-color:var(--bkg);
+            color: var(--txt);
+            font-family: var(--font1);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        @media screen and (max-width: 400px){
+            .error {
+                width: 80%;
+                margin: 0 auto;
+                gap: 32px;
+                  
+            }
+            .error img {
+                width: 375px;
+            }
+            .error h1, button {
+                font-family: var(--font1);
+                font-size: 14px;
+                font-weight: 700;
+                text-align: left;
+            }
+            .error br {
+                display: none;
+            }
+            .error .mobile {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="error">
+            <img src="assets/rafiki.png" alt="504 image">
+            <h1>The server encountered a temporary error and could not complete<br>
+                your request. <br class="mobile">Please try again in 30 seconds.</h1>
+            <button>Reload page</button>
+        </div>
+    </main>
+</body>
+</html>
