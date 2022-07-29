@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* Imported the font "Inter" from the google font library. */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* To make it easier to access certain values and change them globally,
+            a root style system has been created. Mainly for colors, fonts, etc. */
+        :root {
+            --bkg: #00A9A5;
+            --txt: #fff;
+            --txt2: #424242;
+            --font1: 'Inter', sans-serif;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        /* The error element styling */
+        .error {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+            gap: 24px;
+        }
+
+        .error img {
+            width: 500px;
+        }
+
+        .error h1 {
+            font-family: var(--font1);
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--txt2);
+        }
+        .error button {
+            padding: 14px 28px;
+            border-radius: 8px;
+            border: none;
+            background-color:var(--bkg);
+            color: var(--txt);
+            font-family: var(--font1);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        @media screen and (max-width: 400px){
+            .error {
+                width: 80%;
+                margin: 0 auto;
+                  
+            }
+            .error img {
+                width: 350px;
+            }
+            .error h1, button {
+                font-family: var(--font1);
+                font-size: 16px;
+                font-weight: 700; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="error">
+            <img src="assets/image 1.png" alt="404 image">
+            <h1>Oops, We can't seem to find<br>
+                the page that you are looking for.</h1>
+            <button>Back to Home</button>
+        </div>
+    </main>
+</body>
+</html>
