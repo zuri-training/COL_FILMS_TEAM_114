@@ -131,14 +131,16 @@
         .topnav .rightnav .icons {
             width: 22px;
         }
+        /* Sidebar CSS */
         .side {
             position: relative;
             display: flex;
             width: 220px;
-            height: 120vh;
             background-color: var(--txt);
         }
         .sidebar {
+            width: 100%;
+            height: 120vh;
             color: var(--txt2);
             display: flex;
             flex-direction: column;
@@ -153,6 +155,7 @@
         .sidebar .sidelist {
             display: flex;
             flex-direction: column;
+            gap: 10px;
         }
         .sidelist li {
             display: flex;
@@ -176,6 +179,7 @@
         .sidelist li a .icons {
             width: 20px;
         }
+        /* End of Sidebar CSS */
         main {
             display: flex;
             flex-direction: row;
@@ -316,8 +320,8 @@
     <main>
         <section class="side">
             <nav class="sidebar">
-                <h1>Settings</h1>
                 <ul class="sidelist">
+                <h1>Settings</h1>
                     <li><a href="#"><img class="icons" src="assets/account.svg" alt="">Account</a></li>
                     <li><a href="#"><img class="icons" src="assets/bell.svg" alt="">Notification</a></li>
                     <li><a href="#"><img class="icons" src="assets/download.svg" alt="">Downloads</a></li>
