@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit" class="btn btn-primary">Sign Up</button>
+
+    <input type="hidden" name="next" value="{% url 'movies:index' %}" />
+</form>
+
+{% endblock content %}

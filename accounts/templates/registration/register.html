@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+    <h2>Create An Account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'accounts:register' %}" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    {{ user_info_form.as_p }}
+
+    <button name="submit" class="btn btn-primary">Register</button>
+    
+    <input type="hidden" name="next" value="{% url 'movies:index' %}" />
+</form>
+
+{% endblock content %}
+

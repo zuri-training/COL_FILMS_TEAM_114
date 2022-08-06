@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+<h2>Log in to your account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+
+    <h1>
+        User Details
+    </h1>
+    <h3>
+        {{ user.username }}
+        <br>
+        {{ user.userinfo.user_type }}
+
+    </h3> 
+
+    <h1>Lists of all Signin User's Videos </h1>
+
+    {% for movie in movies %}
+
+    <a href="{% url 'movies:view_movie' movie.id %}">
+        <video width="320" height="240" controlsList="nodownload">
+            <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+        </video>
+    </a>
+
+    {% empty %}
+
+    <h3>
+        No movie Yet!
+    </h3>
+
+    <li>
+        <a href="{% url 'movies:all_movies' %}">Would you like to UPLOAD a Movie?</a>
+    </li>
+    {% endfor %}
+
+
+    <h1>Lists of all Favourites</h1>
+
+    {% for favourite in favourites %}
+
+        <a href="{% url 'movies:view_movie' favourite.id %}">
+            <video width="320" height="240" controlsList="nodownload">
+                <source src="{{ MEDIA_URL }}/{{ favourite.video }}" type="video/mp4">
+            </video>
+        </a>
+
+    {% empty %}
+
+    <h3>
+        No Favourites Yet!
+    </h3>
+
+    <li>
+        <a href="{% url 'movies:all_movies' %}">Would you like to checkout some Movies?</a>
+    </li>
+    {% endfor %}
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

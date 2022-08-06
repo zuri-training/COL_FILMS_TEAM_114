@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Lists of all posts</h1>
+
+{% for movie in movies %}
+
+<a href="{% url 'movies:view_movie' movie.id %}">
+    <video width="320" height="240" controlsList="nodownload">
+        <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+    </video>
+</a>
+
+
+{% empty %}
+
+<h3>
+    No Movies have been added yet.
+</h3>
+
+<li><a class="nav-link" href="{% url 'movies:new_movie'%}">Add Movie</a></li>
+
+{% endfor %}
+
+{% endblock content %}

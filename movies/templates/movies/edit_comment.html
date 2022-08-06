@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2><a href="{% url 'movies:view_movie' movie.id %}">{{ movie }}</a></h2>
+
+<div style="margin: 10px auto;">
+    <video autoplay="autoplay" controls controlsList="nodownload preload=" preload">
+        <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+        </source>
+    </video>
+</div>
+<div style="margin: 10px auto;">
+    <h1>
+        <a href="{{movie.video.url}}">Download</a>
+
+    </h1>
+</div>
+
+<fieldset name="Video File Upload and Display">
+    {% if msg %} {% autoescape off %} {{ msg }} {% endautoescape %} {% endif %}
+    <form method="post" action="{% url 'movies:edit_comment' comment.id %}">
+        {% csrf_token %}
+        <dl>
+            {{ form.as_p }}
+            <p>
+                <input type="submit" value="Add Comment">
+            </p>
+    </form>
+</fieldset>
+
+{% endblock content %}

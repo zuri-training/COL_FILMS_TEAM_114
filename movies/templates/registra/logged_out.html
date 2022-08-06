@@ -1,0 +1,22 @@
+{% extends "learning_logs/base.html" %}
+
+
+{% block page_header %}
+    <h3>Logged Out</h3>
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    <div class="card mb-3">
+        <h4 class="card-header">
+            You've been logged out, thanks for visiting!
+        </h4>
+        <div>    
+            <a href="{% url 'movies:login' %}">Log in</a>
+        </div>
+    </div>
+</ul>
+{% endblock content %}
+
+
+
