@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@100;300&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
         * {
         margin: 0;
@@ -139,6 +139,9 @@
             border-radius: 25px;
             gap: 30px;
         }
+        .heading img {
+            display: none;
+        }
         .heading h1 {
             color: var(--bkg);
             text-align: center;
@@ -155,25 +158,29 @@
         }
         .sign-up {
             display: flex;
-            flex-direction: row;
-            gap: 90px;
+            flex-direction: column;
+            gap: 25px;
             font-family: var(--font1);
             font-weight: 700;
             font-size: 16px;
         }
-        .leftside, .rightside {
+        .rows {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 95px;
+        }
+        .rows label {
             display: flex;
             flex-direction: column;
-            gap: 25px;
-        }
-        .leftside label, .rightside label {
             font-family: var(--font1);
             font-size: 16px;
             font-weight: 400;
             color: var(--txt2);
-            margin: -5px 0;
+            gap: 10px;
         }
-        .leftside input, .rightside input, select {
+        .rows input, select {
             width: 330px;
             padding: 12px;
             border: 1px solid rgba(89, 117, 255, 0.3);
@@ -225,6 +232,69 @@
             font-weight: 400;
             font-size: 16px;
         }
+        .one {
+            display: none;
+        }
+
+        @media screen and (max-width: 400px) {
+            body {
+                background-image: url('assets/sign-up-bkg.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-position: top;
+            }
+            main {
+                margin-bottom: 30px;
+            }
+            .frame {
+                width: 360px;
+                height: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--txt);
+            }
+            .heading {
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+            }
+            .heading img {
+                display: block;
+                width: 100px;
+                filter: invert(42%) sepia(8%) saturate(241%)
+                 hue-rotate(314deg) brightness(91%) contrast(83%);
+            }
+            .heading h1 {
+                font-size: 24px;
+            }
+            .sign-up {
+                display: flex;
+                flex-direction: column;
+            }
+            .rows {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .agreement, .onboard {
+                display: none;
+                margin: 0;
+            }
+            #hidden {
+                display: flex;
+            }
+            .agreement a, p {
+                font-size: 10px;
+            }
+            .onboard p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -253,45 +323,54 @@
     <main>
         <div class="frame">
             <div class="heading">
+                <img src="assets/varsity vines.svg" alt="">
                 <h1>Join the Varsity Family</h1>
                 <p>Please enter your details</p>
             </div>
             <div class="sign-up">
-                <div class="leftside">
-                    <label for="">First Name</label>
-                    <input type="text" placeholder="Enter your ">
-                    <label for="">Email</label>
-                    <input type="text" placeholder="Enter your ">
-                    <label for="">Password</label>
-                    <input type="password" placeholder="Enter your ">
-                    <label for="">School</label>
-                    <input type="text" placeholder="Enter your ">
+                <div class="rows">
+                    <label for="">First Name<input type="text" placeholder="Enter your First Name"></label>
+                    <label for="">Last Name<input type="text"placeholder="Enter your Last Name"></label>
                 </div>
-                <div class="rightside">
-                    <label for="">Last Name</label>
-                    <input type="text" placeholder="Enter your ">
-                    <label for="text">Phone Number</label>
-                    <input type="text" placeholder="Enter your ">
-                    <label for="">Retype Password</label>
-                    <input type="password" placeholder="Enter your ">
-                    <label for="">Gender</label>
-                    <select name="Gender" id="cars">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div class="rows">
+                    <label for="">Email<input type="text" placeholder="Enter your Email"></label>
+                    <label for="">Phone Number<input type="text"placeholder="Enter your Phone Number"></label>
                 </div>
+                <div class="rows">
+                    <label for="">Password<input type="text" placeholder="Enter your Password"></label>
+                    <label for="">Retype Password<input type="text"placeholder="Re-enter your Password"></label>
+                </div>
+                <div class="rows">
+                    <label for="">School<input type="text"placeholder="Enter your School"></label>
+                    <label for="">Gender
+                        <select name="Gender" id="cars">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="agreement one" id="hidden">
+                <input type="checkbox" name="" id="" style="width: 20px; height: 20px;">
+                <a href="">I agree that I have read, understand, and fully agree to<br>
+                     the Varsity Vines terms of service and privacy policy.</a>
+            </div>
+            <div class="onboard one" id="hidden">
+                <button>Create your free Varsity account</button>
+                <p>Already have an account?<a href=""> Sign in</a></p>
             </div>
         </div>
         <div class="agreement">
             <input type="checkbox" name="" id="" style="width: 20px; height: 20px;">
-            <a href="">I agree that I have read, understand, and fully agree to,<br>
+            <a href="">I agree that I have read, understand, and fully agree to<br>
                  the Varsity Vines terms of service and privacy policy.</a>
         </div>
         <div class="onboard">
             <button>Create your free Varsity account</button>
             <p>Already have an account?<a href=""> Sign in</a></p>
         </div>
+        
     </main>
 </body>
 </html>
