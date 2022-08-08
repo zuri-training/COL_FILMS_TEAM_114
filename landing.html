@@ -136,6 +136,9 @@
             align-items: center;
             overflow: hidden;
             height: 720px;
+            background-image: url("assets/heroleft.png");
+            background-size: 14%;
+            background-repeat: no-repeat;
         }
         .heroinfo {
             display: flex;
@@ -189,7 +192,7 @@
         }
         .info1 {
             background: linear-gradient(119.58deg, #2C4B4B 40.59%, #0E202B 88.55%);
-            height: 700px;
+            height: 740px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -203,6 +206,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            margin-top: 30px;
         }
         .info1text h1 {
             font-weight: 700;
@@ -227,6 +231,32 @@
             width: 670px;
         }
         .info2 {
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color:  var(--txt);
+            gap: 50px;
+        }
+        .info2text h1 {
+            font-weight: 400;
+            font-size: 40px;
+            color: #000F10;
+        }
+        .info2text p {
+            font-weight: 500;
+            font-size: 16px ;
+            text-align: center;
+            color: #000F10;;
+        }
+        .info2text span {
+            font-weight: 700;
+        }
+        .info2 img {
+            width: 100%;
+        }
+        .info3 {
             height: 450px;
             display: flex;
             justify-content: center;
@@ -234,19 +264,89 @@
             background-color:  #CCEEED;
             gap: 50px;
         }
-        .info2text h1 {
+        .info3text h1 {
             font-size: 60px;
             color: #005452;
         }
-        .info2text p {
+        .info3text p {
             font-weight: 500;
             font-size: 16px ;
         }
-        .info2text span {
+        .info3text span {
             color: #00A9A5;
         }
-        .info2 img {
+        .info3 img {
             width: 750px;
+        }
+        .cta {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 330px;
+            gap: 30px;
+            background-color: #DEE3FF;
+        }
+        .cta_texts {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+            color: var(--txt2);
+        }
+        .cta_texts h1 {
+            font-weight: 700;
+            font-size: 40px;
+        }
+        .cta_texts p {
+            font-weight: 400;
+            font-size: 16px;
+        }
+        .cta button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 14px 28px;
+            color: var(--txt);
+            background-color: #5975FF;;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .footernav {
+            height: 230px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+        .footerflex {
+            /* margin-left: 110px; */
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            gap: 270px;
+        }
+        .footerflex ul {
+            display: flex;
+            flex-direction: row;
+            gap: 65px;
+        }
+        .footerflex ul li a{
+            color: #000F10;
+        }
+        .footertext {
+            display: flex;
+            flex-direction: column;
+            color: var(--txt2);
+            gap: 5px;
         }
     </style>
 </head>
@@ -288,13 +388,13 @@
                 </div>
             </div>
             <div class="heroimg">
-                <img src="assets/heroimg.png" alt="">
+                <img src="assets/heroright.png" alt="">
             </div>
         </div>
     </main>
     <section class="info1">
         <div class="info1text">
-            <h1>It's almost as if you were there</h1>
+            <h1>As clear as day</h1>
             <p>Watch HD videos in real time. No stress, no delay.</p>
             <button onclick="window.location.href='https://'">Try it, it's free!</button>
         </div>
@@ -302,11 +402,77 @@
     </section>
     <section class="info2">
         <div class="info2text">
+            <h1>Find videos on <span>anything</span></h1>
+            <p>Watch anything. No ads. No hidden charges</p>
+        </div>
+        <div class="imagecards">
+            <img src="assets/imagecard.png" alt="">
+        </div>
+    </section>
+    <section class="info3">
+        <div class="info3text">
             <h1><span>Watch</span> anywhere<span>,</span><br> anytime</h1>
             <p>Whether you're in your home or on the go,
                  stream VVines video's<br> anywhere, anytime.</p>
         </div>
         <img src="assets/phone.png" alt="">
     </section>
+    <section>
+        <div class="info4">
+            <h2></h2>
+            <div class="carousel">
+                <img src="" alt="">
+                <img src="" alt="">
+                <div class="imgcard">
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div class="imgcard">
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div class="imgcard">
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div class="imgcard">
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div class="imgcard">
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div class="imgcard">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta">
+        <div class="cta_texts">
+            <h1>Ready?</h1>
+            <p>Try it, it's free</p>
+        </div>
+        <button>Join Varsity Vines now <img src="assets/forwardarrow.svg" alt=""></button>
+    </section>
+    <footer>
+        <div class="footernav">
+            <div class="footerflex">
+                <img src="assets/varsity vines.svg" alt="" style="width: 115px;">
+                <ul>
+                    <li><a href="">Creators</a></li>
+                    <li><a href="">Help centre</a></li>
+                    <li><a href="">Join us</a></li>
+                    <li><a href="">Upload</a></li>
+                </ul>
+            </div>
+            <div class="footertext">
+                <p>Ⓒ 2022 Varsity Vines</p>
+                <p>All rights reserved. Made for students, by students</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
