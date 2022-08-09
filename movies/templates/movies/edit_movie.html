@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<fieldset name="Video File Upload and Display">
+    {% if msg %} {% autoescape off %} {{ msg }} {% endautoescape %} {% endif %}
+
+    <form method="post" action="{% url 'movies:edit_movie' movie.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <button type="submit">Update Movie Details </button>
+        </p>
+    </form>
+</fieldset>
+
+{% endblock content %}

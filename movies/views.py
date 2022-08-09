@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from .decorators import student_only
 
 # Create your views here.
-from .forms import MovieForm, MovieCommentForm
+from .forms import MovieForm, MovieCommentForm, EditMovieForm
 from .models import Movie, MovieComment, Like
 from django.http import Http404
 
@@ -36,6 +36,37 @@ def new_movie(request):
     
     context = {"form" : form}
     return render(request, "movies/new_movie.html", context)
+
+@login_required
+def edit_movie(request, movie_id):
+    """Edit an exisiting comment."""
+    movie = Movie.objects.get(id=movie_id)
+
+    #check movie belongs to the current user
+    check_comment_owner(movie.author, request.user)
+
+    if request.method != 'POST':
+        # Initial request; prefill from with current entry.
+        form = EditMovieForm(instance=movie)
+    else:
+        # Change the data since its POST request
+        form = EditMovieForm(instance=movie, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('movies:view_movie', movie_id=movie.id)
+
+    context = {'movie': movie,'form': form}
+    return render(request, 'movies/edit_movie.html', context)
+
+
+@login_required
+def delete_movie(request, movie_id):
+    """Edit an exisiting comment."""
+    movie = Movie.objects.get(id=movie_id)
+    #check movie belongs to the current user
+    check_comment_owner(movie.author, request.user)
+    movie.delete()
+    return redirect('movies:all_movies')
 
 @login_required
 def new_comment(request, movie_id):
@@ -79,15 +110,20 @@ def edit_comment(request, comment_id):
     context = {'movie': movie,'comment': comment, 'form': form}
     return render(request, 'movies/edit_comment.html', context)
 
+from django.core.paginator import Paginator
 
-from django.db.models import Q  # New
 def all_movies(request):
 
-    movies = Movie.objects.all().order_by("-created")    
+    movies = Movie.objects.all().order_by("-created")   
 
-    #movie = random.choice(movies)   , "movie" : movie
+    paginator = Paginator(movies, 6) # Show 25 contacts per page.
 
-    context = {"movies" : movies}
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    #movie = random.choice(movies)   , "page_obj" : page_obj
+
+    context = {"movies" : movies, "page_obj" : page_obj}
     return render(request, "movies/movies.html", context)
 
 
