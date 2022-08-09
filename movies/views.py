@@ -79,19 +79,31 @@ def edit_comment(request, comment_id):
     context = {'movie': movie,'comment': comment, 'form': form}
     return render(request, 'movies/edit_comment.html', context)
 
+
+from django.db.models import Q  # New
 def all_movies(request):
-    """Handles new movie uploads"""
-    # try:
-    movies = Movie.objects.all()
+
+    movies = Movie.objects.all().order_by("-created")    
 
     #movie = random.choice(movies)   , "movie" : movie
 
     context = {"movies" : movies}
     return render(request, "movies/movies.html", context)
+
+
+def search_movies(request):
+
+    q = request.GET.get('q')
+
+    movies = Movie.objects.filter(title__contains=q)
+
+    context = {"movies" : movies}
+    return render(request, "movies/search.html", context) 
     
 @login_required
 def view_movie(request, movie_id):
     """Handles new movie uploads"""
+
     movie = Movie.objects.get(id=movie_id)
 
     fav = bool
