@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+    <h2>Log in to your account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'accounts:login' %}" method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit" class="btn btn-primary">Log in</button>
+    
+    <input type="hidden" name="next" value="{% url 'movies:index' %}" />
+</form>
+
+{% endblock content %}
+

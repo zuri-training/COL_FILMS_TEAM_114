@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3>{{ movie.title }}</h3>
+    <div style="margin: 10px auto;">
+        <video autoplay="autoplay" controls controlsList="nodownload preload="preload">
+            <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4"></source>
+        </video>
+    </div>  
+
+    <div style="margin: 10px auto;">
+        <ul>
+            <li>
+                Movie Author: <a href="{% url 'movies:view_profile' movie.id %}">{{movie.author}}</a>
+            </li>
+            <li>
+                {% if movie.description %}
+                    Movie Description: {{ movie.description }}
+                {% else %}
+                    Movie Description: No Description has been added to this video!
+                {% endif %}
+            </li>
+
+            <li>
+                <form action="{% url 'movies:like_movie' movie.id %}" method="POST">
+                    {% csrf_token %}
+                    {% if lik  %}
+                        <button style="background-color: red;" type="submit">Unlike</button>
+                    {% else %}
+                        <button style="background-color: greenyellow;" type="submit">Like</button>
+                    {% endif %}
+                </form>`
+                {% if movie.liked.count < 1 %}
+                    No Likes Yet!
+                {% elif movie.liked.count == 1 %}
+                    1 Like
+                {% else %}
+                <strong>{{ movie.liked.count }} Likes </strong>
+                {% endif %}
+            </li>
+
+            <li>
+                {% if fav %}
+                    <a href="{% url 'accounts:add_favourite' movie.id %}">Remove from Favourites</a>
+                {% else %}
+                    <a href="{% url 'accounts:add_favourite' movie.id %}">Add to Favourites</a>
+                {% endif %}
+            </li>
+                
+            <li><a href="{{movie.video.url}}">Download</a></li>
+            <li><a href="{% url 'movies:new_comment' movie.id %}">Add Comment</a></li>
+
+        </ul>
+    </div>
+
+<h1>Comments</h1>
+{% for comment in comments %}
+    <ul>
+        <li> 
+            {% if comment.comment_author.userinfo.avatar %}
+                <a href="{{ movie.author }}"><img style="width:50px;" src="{{ comment.comment_author.userinfo.avatar.url }}" alt="{{ comment.comment_author }} avatar"></a>
+            {% else %}
+                nawa <a href="{{ movie.author }}"><img src="{% static 'dummy.png' %}" alt="My image"></a>  
+            {% endif %}
+
+            <br>
+            Comment Author: <a href="{% url 'movies:view_commenter' comment.id %}">{{ comment.comment_author }}</a>
+            <p>Comment Author Type - {{ comment.comment_author.userinfo.user_type }} </p>
+            <p><strong>Date Published</strong> - {{ comment.date_added }}</p>
+            <p>Comment Text: {{ comment.comment_text}} </p>
+
+            {% if request.user == comment.comment_author %}
+                <a href="{% url 'movies:edit_comment' comment.id %}">Edit Comment</a>
+            {% else %}
+
+            {% endif %}
+        </li>
+    </ul>
+{% endfor %}
+{% endblock content %}
