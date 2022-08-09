@@ -31,6 +31,10 @@ urlpatterns = [
     path('movies/', views.all_movies, name='all_movies'),
     
     path('view_movie/<int:movie_id>', views.view_movie, name='view_movie'),
+
+    path('edit_movie/<int:movie_id>/', views.edit_movie, name='edit_movie'),
+
+    path('delete_movie/<int:movie_id>/', views.delete_movie, name='delete_movie'),
     
     path('view-profile/<int:movie_id>/', views.view_profile, name='view_profile'),
 

@@ -5,22 +5,23 @@
     </head>
     <body>
         <nav>
-            {% if user.is_authenticated %}
-                {% if user.userinfo.user_type == "Student" %}
+            {% if request.user.is_authenticated %}
+                {% if request.user.userinfo.user_type == "Student" %}
                     <ul>
-                        <li>Hello, {{ user.username }}</li>
-                        <li>You are a {{ user.userinfo.user_type }}</li>
+                        <li>Hello, {{ request.user.username }}</li>
+                        <li>You are a {{ request.user.userinfo.user_type }}</li>
                         <li><a class="nav-link" href="{% url 'movies:index'%}">Home</a></li>
                         <li><a class="nav-link" href="{% url 'movies:all_movies'%}">Movies</a></li>
-                        <li><a class="nav-link" href="{% url 'accounts:list_favourites' %}">Favourites</a></li>
+                        <li><a class="nav-link" href="{% url 'accounts:profile' %}">My Profile</a></li>
+                        <li><a class="nav-link" href="{% url 'accounts:list_favourites' %}">My Favourites</a></li>
                         <li><a class="nav-link" href="{% url 'movies:new_movie'%}">Add Movie</a></li>
                         <li><a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a></li>
 
                     </ul>                
                 {% else %}
                     <ul>
-                        <li>Hello, {{ user.username }}</li>
-                        <li>You are a {{ user.userinfo.user_type }}</li>
+                        <li>Hello, {{ request.user.username }}</li>
+                        <li>You are a {{ request.user.userinfo.user_type }}</li>
                         <li><a class="nav-link" href="{% url 'movies:index'%}">Home</a></li>
                         <li><a class="nav-link" href="{% url 'movies:all_movies'%}">Movies</a></li>
                         <li><a class="nav-link" href="{% url 'accounts:list_favourites' %}">Favourites</a></li>

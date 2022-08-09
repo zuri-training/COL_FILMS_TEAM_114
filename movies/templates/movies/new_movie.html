@@ -4,10 +4,34 @@
 
 <fieldset name="Video File Upload and Display">
 	{% if msg %} {% autoescape off %} {{ msg }} {% endautoescape %} {% endif %}
-	<form method="post" action="{% url 'movies:new_movie' %}" enctype="multipart/form-data">
+
+	<script>
+		var _validFileExtensions = [".mp4", ".mov"];
+		function Validate(oForm) {
+			var arrInputs = oForm.getElementsByTagName("input");
+			for (var i = 0; i < arrInputs.length; i++) {
+				var oInput = arrInputs[i]; if (oInput.type == "file") {
+					var
+					sFileName = oInput.value; 
+						var blnValid = false;
+						for (var j = 0; j < _validFileExtensions.length; j++) {
+							var sCurExtension = _validFileExtensions[j]; if
+								(sFileName.substr(sFileName.length - sCurExtension.length,
+									sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) { blnValid = true; break; }
+						} if (!blnValid) {
+							alert("Invalid File Format, allowed extensions are: " + _validFileExtensions.join(" , "));
+							return false;
+						}
+				}
+			}
+
+			return true;
+		}
+	</script>
+
+	<form method="post" action="{% url 'movies:new_movie' %}" enctype="multipart/form-data" onsubmit="return Validate(this);">
+		
 		{% csrf_token %}
-		<dl>
-			<!-- <p>
 				<label>Add Video Title</label>&nbsp;&nbsp;
 				<br>
 				<input type="text" name="title" autocomplete="off" >
@@ -20,15 +44,32 @@
 				<br>
 				<label>Browse and select a video file</label>&nbsp;&nbsp;
 				<br>
-				<input type="file" name="video" autocomplete="off" required>
-			</p> -->
+				<input type="file" name="video" autocomplete="off" required accept="video/*">
+				
+				<script>
+					// create the video element but don't add it to the page
+					var vid = document.createElement('video');
 
-			{{ form.as_p }}
+					document.querySelector('input[name = "video"]').addEventListener('change', function valid() {
+						// create url to use as the src of the video
+						var fileURL = URL.createObjectURL(this.files[0]);
 
+						vid.src = fileURL;
+						// wait for duration to change from NaN to the actual duration
 
-		</dl>
+						vid.ondurationchange = function () {
+
+							if ((this.duration) > 900) {
+								alert("Video must be less than 15 minutes");
+								window.location.reload();
+							}
+						};
+					});
+				</script>
+								
+<!-- {{ form.as_p }} -->
 		<p>
-			<input type="submit" value="Upload">
+			<button type="submit" onclick="valid()">Upload Video </button>
 		</p>
 	</form>
 </fieldset> 	

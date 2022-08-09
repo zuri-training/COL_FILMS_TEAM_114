@@ -8,6 +8,11 @@ class MovieForm(forms.ModelForm):
         model = Movie
         fields = {'title' : '', 'description': '', 'video' : ''} 
 
+class EditMovieForm(MovieForm):
+    class Meta:
+        model = Movie
+        fields = {'title' : '', 'description': ''} 
+
 class MovieCommentForm(forms.ModelForm):
     class Meta:
         model = MovieComment

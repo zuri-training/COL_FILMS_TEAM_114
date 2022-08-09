@@ -31,7 +31,7 @@
                     {% else %}
                         <button style="background-color: greenyellow;" type="submit">Like</button>
                     {% endif %}
-                </form>`
+                </form>
                 {% if movie.liked.count < 1 %}
                     No Likes Yet!
                 {% elif movie.liked.count == 1 %}
@@ -48,6 +48,10 @@
                     <a href="{% url 'accounts:add_favourite' movie.id %}">Add to Favourites</a>
                 {% endif %}
             </li>
+            {% if request.user == movie.author %}
+                <li><a href="{% url 'movies:edit_movie' movie.id %}">Edit Movie</a></li>
+                <li><a href="{% url 'movies:delete_movie' movie.id %}">Delete</a></li>           
+            {% endif %}
                 
             <li><a href="{{movie.video.url}}">Download</a></li>
             <li><a href="{% url 'movies:new_comment' movie.id %}">Add Comment</a></li>
