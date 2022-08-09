@@ -27,8 +27,9 @@
         background-color: rgb(24, 129, 129);
         border: none;
         color: white;
-        margin-left: 30em;
-        margin-top: 2em;
+        margin-left: auto;
+            margin-right: auto;
+            display: block;
         font-size: 20px;
         padding: 15px;
         width: 170px;
@@ -41,7 +42,7 @@
       
       .butt2 {
         cursor: pointer;
-        display: inline-block;
+        
         position: relative;
         transition: 0.5s;
       }
@@ -63,3 +64,18 @@
         opacity: 1;
         right: 0;
       }
+      @media screen and (max-width: 600px) {
+        /* Authenticated mobile .topnav */
+        .h1 {
+            width: 100%;
+            padding: 0 20px;
+        }
+        .butt2 {
+            margin: auto;
+        }
+        .two {
+          margin: auto;
+          width: 80%;
+      }
+       
+    }
