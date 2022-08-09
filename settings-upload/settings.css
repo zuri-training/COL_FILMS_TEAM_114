@@ -1,0 +1,181 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family:'Inter', sans-serif;
+            /* outline: 1px solid salmon; */
+        }
+        :root {
+            --bkg: #00A9A5;
+            --bkg2: #F5F5F5;
+            --txt: #ffffff;
+            --txt2: #424242;
+            --font1: 'Inter', sans-serif;
+        }
+        body {
+            width: 100%;
+            /* background-color: rgb(180, 171, 189); */
+            display: flex;
+            flex-direction: column;
+        }
+        .topnav {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            padding: 0 40px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 0px 42px rgba(0, 27, 29, 0.08);
+        }
+        .topnav a {
+            text-decoration: none;
+        }
+        .leftnav {
+            display: flex;
+            gap: 25px;
+        }
+        .leftnav .one{
+            width:120px;
+            display: flex;
+            gap: 25px;
+        }
+        .leftnav .two{
+            width: 30px;
+            display: flex;
+            gap: 25px;
+            height: 100px;
+        }
+        .middle {
+            display: flex;
+            gap: 25px;
+        }
+        .search {
+            display: flex;
+            gap: 0;
+        }
+        .search input {
+            font-family: var(--font1);
+            font-weight: 700;
+            font-size: 14px;
+            color: #A6A6A6;;
+            width: 480px;
+            height: 40px;
+            padding: 12px 16px;
+            border-radius: 4px 0px 0px 4px;
+            border: 1px solid #A6A6A6;
+        }
+        .search button {
+            width: 50px;
+            height: 40px;
+            border-radius: 0px 4px 4px 0px;
+            border: 1px solid #A6A6A6;
+            cursor: pointer;
+        }
+        .search button img {
+            width: 18px;
+        }
+        .middle .micbtn {
+            background-color: transparent;
+            border: none;
+        }
+        .middle button img {
+            width: 18px;
+            height: 22px;
+            cursor: pointer;
+        }
+        .topnav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        .topnav ul li button {
+            font-family: var(--font1);
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            border-radius: 2.5px;
+            background-color: var(--bkg);
+            color: var(--txt);
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 400px) {
+            /* Authenticated mobile .topnav */
+            .topnav {
+                width: 100%;
+                padding: 0 20px;
+            }
+            .topnav .middle {
+                display: none;
+            }
+            .topnav ul li button {
+                padding: 5px 10px;
+            }
+        }
+        nav .rightnav {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+        }
+        .rightnav button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .topnav .rightnav .icons {
+            width: 22px;
+        }
+.side {
+    position: relative;
+    display: flex;
+    width: 220px;
+    background-color: var(--txt);
+}
+.sidebar {
+    width: 100%;
+    height: 120vh;
+    color: var(--txt2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    align-items: center;
+    gap: 10px;
+}
+.sidebar h1 {
+    display: block;
+    padding: 30px 73px;
+}
+.sidebar .sidelist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sidelist li {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+}
+.sidelist li:hover {
+    background-color: var(--bkg2);
+}
+.sidelist li a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--txt2);
+    gap: 10px;
+}
+.sidelist li a:hover {
+    color: var(--bkg);
+    filter: invert(43%) sepia(98%) saturate(2578%) hue-rotate(150deg) brightness(97%) contrast(101%);
+}
+.sidelist li a .icons {
+    width: 20px;
+}
