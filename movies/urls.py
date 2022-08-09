@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 app_name = 'movies'
 urlpatterns = [
     path('', views.index, name='index'),
+
+    path('search/', views.search_movies, name='search_movies'),
     
     path('new_movie/', views.new_movie, name='new_movie'),
     
