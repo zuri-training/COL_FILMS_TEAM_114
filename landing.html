@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Landing</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
@@ -278,6 +278,59 @@
         .info3 img {
             width: 750px;
         }
+        .info4 {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 65px;
+            overflow: hidden;
+            height: 610px;
+        }
+        .info4flex {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .info4flex .icons {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .carousel {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        .imgcard {
+            width: 330px;
+            height: 330px;
+            border-radius: 25px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: var(--txt);
+            gap: 10px;
+        }
+        .img1 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("assets/card1.png");
+        }
+        .img2 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("assets/card2.png");
+        }
+        .img3 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("assets/card3.png");
+        }
+        .img4 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("assets/card4.png");
+        }
         .cta {
             display: flex;
             flex-direction: column;
@@ -325,14 +378,14 @@
             align-items: center;
             gap: 60px;
         }
+        
         .footerflex {
-            /* margin-left: 110px; */
             width: 100%;
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            gap: 270px;
+            padding: 0 110px;
         }
         .footerflex ul {
             display: flex;
@@ -342,11 +395,17 @@
         .footerflex ul li a{
             color: #000F10;
         }
+        .footernav .span {
+            width: 100px;
+        }
         .footertext {
             display: flex;
             flex-direction: column;
             color: var(--txt2);
             gap: 5px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 10px;
         }
     </style>
 </head>
@@ -417,35 +476,37 @@
         </div>
         <img src="assets/phone.png" alt="">
     </section>
-    <section>
-        <div class="info4">
-            <h2></h2>
+    <section class="info4">
+        <h2>Latest on the Vine</h2>
+        <div class="info4flex">
+            <div class="icons">
+                <img src="assets/backarrowicon.svg" alt="">
+                <img src="assets/forwardarrowicon.svg" alt="">
+            </div>
             <div class="carousel">
-                <img src="" alt="">
-                <img src="" alt="">
-                <div class="imgcard">
-                    <h3></h3>
-                    <p></p>
+                <div class="img1 imgcard">
+                    <h3>Touring the Amazon</h3>
+                    <p>The Flutter Team</p>
                 </div>
-                <div class="imgcard">
-                    <h3></h3>
-                    <p></p>
+                <div class="img2 imgcard">
+                    <h3>Explore Thankgiving week at Harvard</h3>
+                    <p>The Flutter Team</p>
                 </div>
-                <div class="imgcard">
-                    <h3></h3>
-                    <p></p>
+                <div class="img3 imgcard">
+                    <h3>Introduction to Calculus - A series</h3>
+                    <p>The Flutter Team</p>
                 </div>
-                <div class="imgcard">
-                    <h3></h3>
-                    <p></p>
+                <div class="img4 imgcard">
+                    <h3>The scholar Fellowship Program for Africans</h3>
+                    <p>The Flutter Team</p>
                 </div>
-                <div class="imgcard">
-                    <h3></h3>
-                    <p></p>
+                <div class="img1 imgcard">
+                    <h3>Touring The Amazon</h3>
+                    <p>The Flutter Team</p>
                 </div>
-                <div class="imgcard">
-                    <h3></h3>
-                    <p></p>
+                <div class="img2 imgcard">
+                    <h3>Explore Thankgiving week at Harvard</h3>
+                    <p>The Flutter Team</p>
                 </div>
             </div>
         </div>
@@ -467,6 +528,7 @@
                     <li><a href="">Join us</a></li>
                     <li><a href="">Upload</a></li>
                 </ul>
+                <span class="span"></span>
             </div>
             <div class="footertext">
                 <p>Ⓒ 2022 Varsity Vines</p>
