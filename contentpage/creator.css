@@ -198,10 +198,10 @@ width: 20px;
   }
   .pic{
     display: grid;
-    grid-template-columns: auto auto ;
+    grid-template-columns: auto auto auto auto;
     background-color:white;
     padding: 10px;
-    width: 50%;
+    width: 70%;
     margin: auto;
     margin-left: 18em;
   }
@@ -256,3 +256,46 @@ width: 20px;
     font-weight: 400;
     margin-bottom: 1em;
  }
+ .butt2{
+    background-color: rgb(24, 129, 129);
+    border: none;
+    color: white;
+    margin-left: auto;
+        margin-right: auto;
+        display: block;
+    font-size: 20px;
+    padding: 15px;
+    width: 170px;
+    transition: all 0.5s;
+    cursor: pointer;
+  text-align: center;
+  border-radius: 7px;
+  top : 20px
+    
+
+  }
+  
+  .butt2 {
+    cursor: pointer;
+    
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .butt2 :after {
+    content: '\00bb';
+   
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .butt2:hover  {
+    padding-right: 25px;
+  }
+  
+  .butt2:hover .butt2:after {
+    opacity: 1;
+    right: 0;
+  }
