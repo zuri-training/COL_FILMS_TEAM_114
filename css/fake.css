@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'poppins', sans-serif ;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #5a5a5a;
+}
+img{
+    cursor: pointer;
+}
+.flex-div{
+    display: flex;
+    align-items: center;
+}
+nav{
+    padding: 2px 1%;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) ;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index:10 ;
+}
+.nav-left .menu-icon{
+    width: 22px;
+    margin-right: 70px;
+    margin-left: 10px;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-left .logo{
+    width: 90px;
+    display: flex;
+    gap: 25px;
+   
+
+}
+.nav-middle .mic-icon{
+    width: 20px;
+}
+.nav-middle .search-box{
+    border: 1px solid #ccc;
+   margin-right: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.nav-middle .search-box input{
+    width: 400px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 18px;
+}
+.nav-middle .search-box img {
+    width: 15px;
+  
+}
+.nav-right .one{
+    padding-right: 20px;
+    width: 42px;
+}
+.nav-right .two{
+    padding-right: 10px;
+    width: 30px;
+}
+.nav-right .three{
+    padding-right: 5px;
+    width: 30px;
+}
+  
+.sidebar{
+    background: #fff;
+    width: 17%;
+    height: 50vh;
+    position: fixed;
+    top: 5em;
+   
+    padding-top: 50px;
+    
+}
+.shortcut-links a img{
+    width: 20px;
+    margin-right: 50px;
+}
+.shortcut-links a{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    flex-wrap: wrap;
+    padding: 8px;
+    
+}
+.shortcut-links .big{
+    width: 90px;
+    height: 30px;
+    margin-left: 30px
+};
+.side {
+    position: relative;
+    display: flex;
+    width: 220px;
+    background-color: var(--txt);
+}
+.sidebar {
+    width: 100%;
+    height: 120vh;
+    color: var(--txt2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    align-items: center;
+    gap: 10px;
+}
+.sidebar .big {
+    width: 90px;
+    height: 30px;
+    margin-left: 30px
+}
+.sidebar .sidelist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sidelist li {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+}
+.sidelist li:hover {
+    background-color: var(--bkg2);
+}
+.sidelist li a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--txt2);
+    gap: 10px;
+}
+.sidelist li a:hover {
+    color: var(--bkg);
+    filter: invert(43%) sepia(98%) saturate(2578%) hue-rotate(150deg) brightness(97%) contrast(101%);
+}
+.sidelist li a .icons {
+    width: 20px;
+}

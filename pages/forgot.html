@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="/beta/COL_FILMS_TEAM_114/css/forgot.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg" href="/assets/logo.png" />
+    <title>Forgot Password</title>
+  </head>
+
+  <body>
+    <!----The Page was divided into two sections.
+        The first section had a CSS Flexbox that contained two flex-items. Flex-item 1 contained the forgot password box
+        and Flex-item 2 contained the image
+        while section 2 contained the help center-->
+    <div class="forgot-password-section">
+      <div class="forgot-password">
+        <img class="fplogo" src="/beta/COL_FILMS_TEAM_114/static/assets/logo.svg" />
+
+        <div class="textfp">
+          <h2>Forgot Your Password?</h2>
+          <p>Don't worry, we'll send a recovery link to your email</p>
+        </div>
+
+        <div class="fpemail">
+          <p>Email</p>
+          <input placeholder="Enter your email" />
+        </div>
+
+        <div class="fprequest">
+          <button type="submit">Request Password Link</button>
+        </div>
+
+        <div class="remember">
+          <p>Remember your password?</p>
+          <span>Back to <a href="#">Login</a></span>
+        </div>
+      </div>
+      <!---The Design Guide had two different images for the mobile and the Desktop View-->
+      <!---Thererfore, the images were indicated in the Html file and each image was displayed for their respective screens-->
+      <div class="imgfpdesktop">
+        <img
+          src="/beta/COL_FILMS_TEAM_114/static/assets/fpdesktop.svg"
+          alt="forgot-password-image"
+          class="img1"
+          height="749px"
+        />
+        <!--used for Desktop View, hidden for mobile view-->
+        <img
+          src="/beta/COL_FILMS_TEAM_114/static/assets/fpmobile.svg"
+          alt="forgot-password-mbimage"
+          class="mbfpimg"
+        />
+        <!--used for Mobile View, hidden for Desktop view-->
+      </div>
+    </div>
+
+    <div class="help-privacy-terms">
+      <p><a href="#">Help</a></p>
+      <p><a href="#">Privacy</a></p>
+      <p><a href="#">Terms & Conditions</a></p>
+    </div>
+
+    <script src="fpscript.js"></script>
+
+   
+  </body>
+</html>
