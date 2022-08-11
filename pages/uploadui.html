@@ -82,7 +82,7 @@
 </head>
 <body>
     <div class="frame">
-        <form action="">
+        <form action="{% url 'movies:new_movie' %}">
             <p><label for="video_name">Video Name:<input type="text" placeholder="" required ></label></p>
             <p><label for="video_description">Video Description: <textarea name="" id="" cols="30" rows="4"></textarea></label></p>
             <p><input class="file" type="file" name="" id=""></p>
