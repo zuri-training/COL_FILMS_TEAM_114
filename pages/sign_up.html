@@ -134,7 +134,7 @@
             justify-content: center;
             align-items: center;
             width: 900px;
-            height: 600px;
+            height: 700px;
             margin: 0 auto;
             border: 2px solid #CCEEED;
             border-radius: 25px;
@@ -249,7 +249,7 @@
             }
             .frame {
                 width: 360px;
-                height: 1200px;
+                height: 1400px;
                 margin: 0 auto;
                 display: flex;
                 flex-direction: column;
@@ -327,30 +327,41 @@
                 <h1>Join the Varsity Family</h1>
                 <p>Please enter your details</p>
             </div>
-            <div class="sign-up">
-                <div class="rows">
-                    <label for="">First Name<input type="text" placeholder="Enter your First Name" required ></label>
-                    <label for="">Last Name<input type="text"placeholder="Enter your Last Name" required ></label>
+            <form action="">
+                <div class="sign-up">
+                    <div class="rows">
+                        <label for="">Username<input type="text" placeholder="Enter your First Name" name="username" required id="id_username"></label>
+                        <label for="">Email<input type="text"placeholder="Enter your Last Name" name="last_name" required id="id_email"></label>
+                    </div>
+                    <div class="rows">
+                        <label for="">First Name<input type="text" placeholder="Enter your Email" name="first_name" required id="id_first_name"></label>
+                        <label for="">Last Name<input type="text"placeholder="Enter your Phone Number" name="last_name" required id="id_last_name"></label>
+                    </div>
+                    <div class="rows">
+                        <label for="">Avatar <input type="file" name="avatar" id="id_avatar"></label>
+                        <label for="">Gender
+                            <select name="Gender" id="id_gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="rows">
+                        <label for="">Password<input type="password" placeholder="Enter your Password" required name="password" id="id_password"></label>
+                        <label for="">Retype Password<input type="password"placeholder="Re-enter your Password" required name="password2" id="id_password2"></label>
+                    </div>
+                    <div class="rows">
+                        <label for="">School<input type="text"placeholder="Enter your School" required name="school" id="id_school"></label>
+                        <label for="">User Type
+                            <select name="Gender" id="id_gender">
+                                <option value="student">Student</option>
+                                <option value="viewer">Viewer</option>
+                            </select>
+                        </label>
+                    </div>
                 </div>
-                <div class="rows">
-                    <label for="">Email<input type="text" placeholder="Enter your Email" required ></label>
-                    <label for="">Phone Number<input type="text"placeholder="Enter your Phone Number" required ></label>
-                </div>
-                <div class="rows">
-                    <label for="">Password<input type="text" placeholder="Enter your Password" required ></label>
-                    <label for="">Retype Password<input type="text"placeholder="Re-enter your Password" required ></label>
-                </div>
-                <div class="rows">
-                    <label for="">School<input type="text"placeholder="Enter your School" required ></label>
-                    <label for="">Gender
-                        <select name="Gender" id="cars">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
+            </form>
             <div class="agreement one" id="hidden">
                 <input type="checkbox" name="" id="" style="width: 20px; height: 20px;">
                 <a href="">I agree that I have read, understand, and fully agree to<br>
