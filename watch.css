@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 *{
     margin: 0;
     padding: 0;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     box-sizing: border-box;
+    text-decoration: none;
 }
-
+/* general */
+.flex{
+    display: flex;
+}
  /* Unregistered Nav Bar */
  nav {
     margin: 0 40px;
@@ -38,12 +43,6 @@ nav a {
     padding: 12px 16px;
     border-radius: 4px 0px 0px 4px;
     border: 1px solid #A6A6A6;
-}
-.search button {
-    width: 50px;
-    height: 40px;
-    border-radius: 0px 4px 4px 0px;
-    border: 1px solid #A6A6A6;
     cursor: pointer;
 }
 .search button img {
@@ -56,6 +55,13 @@ nav a {
 .middle button img {
     width: 18px;
     height: 22px;
+    cursor: pointer;
+}
+.search button {
+    width: 50px;
+    height: 40px;
+    border-radius: 0px 4px 4px 0px;
+    border: 1px solid #A6A6A6;
     cursor: pointer;
 }
 nav ul {
@@ -93,6 +99,7 @@ nav .rightnav .icons {
 /* ------------------ play video page ---- */
 .play-container{
     padding-left: 2%;
+    justify-content: space-between;
 }
 
 .row{
@@ -106,6 +113,32 @@ nav .rightnav .icons {
 .right-sidebar{
     flex-basis: 30%;
     padding: 0 20px;
+}
+.play-back-div{
+    justify-content: space-between;
+    display: flex;
+    padding: 18px 24px;
+}
+.play-back-a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.play-back-a .image-a img, .play-back-b .image-b img {
+    width: 20px; 
+    display: flex;
+    flex-direction: row;
+}
+.play-back-a .volume{
+    padding-left: 20px;
+}
+.play-back-b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    text-decoration: none;
 }
 .kami{
     border-radius: 50%;
@@ -126,26 +159,73 @@ nav .rightnav .icons {
     justify-content: space-between;
     margin-bottom: 8px;
 }
+.side-video-list .small-image{
+    display: flex;
+}
 .side-video-list img{
     width: 100%;
 }
 .side-video-list .small-thumbnail{
     flex-basis: 49%;
 }
-.side-video-list .vid-info{
-    flex-basis: 49%;
+.video-info-container{
+    display: flex;
 }
-.play-video .tags a{
-    color: #0000ff;
-    font-size: 13px;
+.vid-info{
+    font-size: 14px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    color: #424242;
+    align-items: center;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
 }
+.vid-info a{
+    color: #504f4f;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem
+
+}
+.sneak-peaks-text{
+    padding: 1rem;
+    gap: 10px;
+} 
+.sneak-peaks-img{
+    display: flex;
+    gap: 5px;
+    padding-bottom: 2rem;
+}
+  
+.sneak-peaks-img img {
+    width: 32%;
+}
+
 .play-video h3{
     font-weight: 600;
     font-size: 22px;
 }
+.play-video-info p{
+    margin-top: 15px;
+    text-align: left;
+}
+.play-video-info{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.video-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+}
 .play-video .play-video-info{
     display: flex;
-    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 10px;
@@ -160,6 +240,8 @@ nav .rightnav .icons {
     display: inline-flex;
     align-items: center;
     margin-left: 15px;
+    text-decoration: none;
+    color: #424242;
 }
 .play-video hr{
     border: 0;
@@ -169,7 +251,7 @@ nav .rightnav .icons {
 }
 .publisher{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 20px;
 }
 .publisher div{
@@ -177,7 +259,7 @@ nav .rightnav .icons {
     line-height: 18px;
 }
 .publisher img{
-    width: 40px;
+    width: 60px;
     border-radius: 50%;
     margin-right: 15px;
 }
@@ -185,10 +267,12 @@ nav .rightnav .icons {
     color: #000;
     font-weight: 600;
     font-size: 18px;
+    margin-bottom: 10px;
 }
 .publisher div span{
     font-size: 13px;
     color: #5a5a5a;
+    
 }
 .publisher button{
     background: #5975FF;
@@ -198,46 +282,79 @@ nav .rightnav .icons {
     outline: 0;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
+}
+.publisher p{
+    font-size: 10px;
+    margin: left;
+    color: #424242;
 }
 .vid-description{
-    padding-left: 55px;
     margin: 15px 0;
 }
+
+
 .vid-description p{
     font-size: 14px;
     margin-bottom: 5px;
     color: #5a5a5a;
 }
 .vid-description h4{
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 400;
     color: #5a5a5a;
-    margin-top: 15px;
+    margin-top: 35px;
 }
+
 .add-comment{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin: 30px 0;
 }
 .add-comment img{
-    width: 35px;
+    width: 6%;
     border-radius: 50%;
     margin-right: 15px;
 }
-.add-comment input{
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    padding-top: 10px;
-    background: transparent;
+.add-comment textarea{
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 90%;
+    height: 100px;
 }
+.comment-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 25px;
+}
+.comment-button button:first-of-type{
+    background: none;
+    border: none;
+    color: #5975FF;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 20px;
+}
+.comment-button button:last-of-type{
+    color: #ffffff;
+    font-weight: 700;
+    padding: 8px 16px;
+    width: 131px;
+    height: 40px;
+    background: #00A9A5;
+    border-radius: 8px;
+    border: none;
+}
+   
 .old-comment{
     display: flex;
     align-items: center;
     margin: 20px 0;
 }
 .old-comment img{
-    width: 35px;
+    width: 60px;
     border-radius: 50%;
     margin-right: 15px;
 }
@@ -248,14 +365,24 @@ nav .rightnav .icons {
 .old-comment h3 span{
     font-size: 12px;
     color: #5a5a5a;
+    display: block;
     font-weight: 500;
-    margin-left: 8px;
+    margin-top: 12px;
+}
+.old-comment p {
+    margin-top: 15px;
+    line-height: 30px;
 }
 .old-comment .comment-action{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin: 8px 0;
     font-size: 14px;
+}
+.old-comment .comment-action-icons{
+    display: flex;
+    align-items: center;
 }
 .old-comment .comment-action img{
     border-radius: 0;
@@ -268,6 +395,7 @@ nav .rightnav .icons {
 }
 .old-comment .comment-action a{
     color: #0000ff;
+    
 }
 @media (max-width:900px){
     .play-video{
