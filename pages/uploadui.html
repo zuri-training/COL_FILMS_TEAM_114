@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploadui</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        /* outline: 1px solid green; */
+        }
+        :root {
+            --bkg: #00A9A5;
+            --bkg2: #F5F5F5;
+            --txt: #fff;
+            --txt2: #424242;
+            --font1: 'Inter', sans-serif;
+        }
+
+        .frame {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            width: 60%;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid var(--bkg);
+        }
+        form label {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: var(--txt2);
+        }
+        form input {
+            padding: 10px 20px;
+            width: 100%;
+            border: 1px solid var(--txt2);
+            border-radius: 5px;
+        }
+        form textarea {
+            padding: 10px 20px;
+            resize: none;
+            border: 1px solid var(--txt2);
+            border-radius: 5px;
+        }
+        .file-input label, .file-input input {
+            font-size: 15px;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            border: none;
+        }
+        form .submit {
+            width: 220px;
+            margin: 0 auto;
+            border: none;
+            padding: 12px 20px;
+            background-color: var(--bkg);
+            color: var(--txt);
+            font-size: 20px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <form action="">
+            <p><label for="video_name">Video Name:<input type="text" placeholder="" required ></label></p>
+            <p><label for="video_description">Video Description: <textarea name="" id="" cols="30" rows="4"></textarea></label></p>
+            <p><input class="file" type="file" name="" id=""></p>
+            <p><input class="submit" type="submit" value="Upload Video"></p>
+        </form>
+
+    </div>
+</body>
+</html>
