@@ -1,153 +1,405 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+<html lang="en">
 
-<h1>Lists of all posts</h1>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/a097a6cb27.js" crossorigin="anonymous"></script>
+    <title>Explore</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        <style>
-            p {
-                font-family: Roboto, Ariel;
-                margin-top: 0;
-                margin-bottom: 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            border: none;
+
+        }
+
+        body {
+            background-color: #f9f9f9;
+            font-family: Inter, sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            margin-left: 16%;
+        }
+
+
+
+
+        .button-primary {
+            background-color: #00A9A5;
+            color: #fff;
+        }
+
+        .button-secondary {
+            background: #EEEEEE;
+            color: #00A9A5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .page-padding {
+            padding-inline: 32px;
+        }
+
+        .padding-vertical-large {
+            padding: 96px 0;
+        }
+
+        .padding-vertical-small {
+            padding: 20px 0;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            position: -webkit-sticky;
+            background-color: white;
+            padding: 16px 0;
+            box-shadow: 0px 0px 42px rgba(0, 27, 29, 0.08);
+            z-index: 999;
+        }
+
+        .nav_block-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav_block-right {
+            display: flex;
+            align-items: center;
+            gap: 26px
+        }
+
+        .navbar-brand {
+            max-width: 65.6px;
+        }
+
+        .side-nav {
+            width: 15.5%;
+            background-color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 128px;
+            top: 0;
+            left: 0;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+            z-index: 998;
+            overflow: auto;
+        }
+
+        .side-nav_links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            width: 100%;
+            padding: 24px 34px;
+            font-size: 12px;
+        }
+
+        .side-nav_links.active {
+            background-color: #F5F5F5;
+        }
+
+        .nav-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav_block-left {
+            flex-shrink: 0;
+        }
+
+        .nav_block-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .nav-links-wrapper {
+            display: flex;
+        }
+
+        .form-inline {
+            display: flex;
+        }
+
+        .form-control {
+            padding: .75rem 1rem;
+            width: 20rem;
+            border: 1px solid #737171;
+            border-radius: 4px 0px 0px 4px;
+        }
+
+        .button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .nav-mic {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .button-search {
+            padding: 12px 16px;
+            background: #EEEEEE;
+            border-width: 1px 1px 1px 0px;
+            border-style: solid;
+            border-color: #737171;
+            border-radius: 0px 4px 4px 0px;
+            color: #737171;
+        }
+
+        .nav_button-wrapper {
+            display: flex;
+            gap: 16px;
+        }
+
+        .filter-tag-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .filter-tag {
+            font-weight: 400;
+        }
+
+        .filter-tag.active {
+            background: #00A9A5;
+            color: #fff;
+            padding-inline: 26px;
+        }
+
+        .explore_content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .card-body {
+            display: flex;
+            padding: 1rem 0;
+        }
+
+        .thumbnail {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            background-color: rgba(0, 0, 0, .1);
+            border-radius: 50%;
+            margin-right: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .card {
+            width: 23.3%;
+            min-width: 260px;
+        }
+
+        .card-img-top {
+            width: 100%;
+        }
+
+        .video-desc p {
+            color: #737171;
+            line-height: 2;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .video-info {
+            display: flex;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 1390px) {
+            .card {
+                width: 30%;
             }
-        
-            .thumbnail {
+
+        }
+
+        @media only screen and (max-width: 1055px) {
+            .card {
+                width: 48%;
+            }
+
+            .side-nav {
+                display: none;
+            }
+
+            .container {
+                margin-left: 0;
+            }
+
+
+        }
+
+        @media only screen and (max-width: 767px) {
+            .card {
                 width: 100%;
+                max-width: 396px;
             }
-        
-            .search-bar {
-                display: block;
-            }
-        
-            .author {}
-        
-            .stats {}
-        
-            .heading {
-                margin-top: 0px;
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 20px;
-                margin-bottom: 10px;
-        
-            }
-        
-            .preview {}
-        
-            .video-info-grid {
-                display: grid;
-                grid-template-columns: 50px 1fr
-            }
-        
-        
-            .video-info {
-                margin-left: 10px;
-            }
-        
-            .profile-picture {
-                width: 100%;
-                border-radius: 80px;
-        
-            }
-        
-            .thumbnail-row {
-                margin-bottom: 12px;
 
+            .side-nav {
+                display: none;
             }
-        
-            .author,
-            .stats {
-                font-size: 12px;
-                color: rgb(96, 96, 96);
+
+            .upload-video-icon {
+                display: none;
             }
-        
-            .author {
-                margin-bottom: 6px;
+
+            .nav-mic {
+                display: none;
             }
-        
-            .all-video-grid {
-                column-gap: 16px;
-                row-gap: 30px;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
+
+            .container {
+                margin-left: 0;
             }
-        </style>
 
-        <input class="search-bar" type="text" placeholder="Search">
-        <br>
+            .filter-tag-wrapper {
+                display: none;
+            }
 
-        <section class="all-video-grid">
+            .page-padding {
+                padding-inline: 16px;
+            }
+        }
+    </style>
 
-            {% for movie in page_obj %}
-            <section class="preview">
-                <section class="thumbnail-row">
-                    <!-- <img class="thumbnail" src="{{ movie.author. }}" alt="first image"> -->
-                    <a href="{% url 'movies:view_movie' movie.id %}">
-                        <video width="320" height="240" controlsList="nodownload">
-                            <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
-                        </video>
-                    </a>
-                </section>
 
-                <section class="video-info-grid">
-                    {% if movie.author.userinfo.avatar %}
-                        <section class="channel-picture">
-                            <img class="profile-picture" src="{{ movie.author.userinfo.avatar.url }}" alt="">
-                        </section>
-                    {% else %}
-                        <section class="channel-picture">
-                            <img class="profile-picture" src="{% static 'dummy.png' %}" alt="">
-                        </section>
-                    {% endif %}
+{% include 'movies/navbar.html' %}
+</head>
 
-                    <section class="video-info">
-                        <p class="heading">
-                            {{ movie.title }}
-                        </p>
-    
-                        <p class="author">
-                            <a href="{% url 'movies:view_profile' movie.id %}">{{movie.author}}</a>
-                        </p>
-    
-                        <p class="stats">
-                            {{ movie.liked.count }} Likes · Updated : {{ movie.updated }}
-                        </p>
-                    </section>
-                </section>
-            </section>        
-            
-            
-            {% empty %}
-            
-            <h3>
-                No Movies have been added yet.
-            </h3>
-            
-            <li><a class="nav-link" href="{% url 'movies:new_movie'%}">Add Movie</a></li>
-            
-            {% endfor %}
+<body>
+    {% load static %}
+    {% include 'movies/sidebar.html' %}
+    <main>
+        <section class="section-filtertags">
+            <div class="page-padding">
+                <div class="container">
+                    <div class="padding-vertical-small">
+                        <div class="filter-tag-wrapper">
+                            <button class="button filter-tag active">All</button>
+                            <button class="button filter-tag">Comedy</button>
+                            <button class="button filter-tag">Learning</button>
+                            <button class="button filter-tag">Beauty</button>
+                            <button class="button filter-tag">Coding</button>
+                            <button class="button filter-tag">Animation</button>
+                            <button class="button filter-tag">Cooking</button>
+                            <button class="button filter-tag">Action</button>
+                            <button class="button filter-tag">UI/UX</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
+        <section>
+            <div class="page-padding">
+                <div class="container">
+                    <div class="padding-vertical-small">
+                        <div class="explore_content-wrapper">
+                            {% for movie in page_obj %}
+                            <div class="card">
+                                <div>
+                                    <a href="{% url 'movies:view_movie' movie.id %}">
+                                        <video class="card-img-top" width="320" height="150" controlsList="nodownload">
+                                            <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+                                        </video>
+                                    </a>
+                                </div>
 
+                                <div class="card-body">
+                                    <div class="thumbnail" style="margin-bottom: 0px;">
+                                        <a href="{% url 'movies:view_profile' movie.id %}"><img src="{{ movie.author.userinfo.avatar.url }}" alt=""></a>
+                                        
+                                    </div>
+                                    <div class="video-desc">
+                                        <h3 class="card-title"><a href="{% url 'movies:view_movie' movie.id %}">{{ movie.title }}</a>  
+                                        </h3>
+                                        <p>
+                                            {% if movie.description %}
+                                                {{ movie.description }}
+                                            {% else %}
+                                                No Description has been added!
+                                            {% endif %}
+                                        </p>
+                                        <div class="video-info">
+                                            <p class="video-views">{{ movie.liked.count }} Likes</p>
+                                            <p class="video-publish-date">| {{ movie.updated }}</p>
+                                        </div>
 
-    </body>
+                                    </div>
+                                </div>
+                            </div>
 
-<div class="">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+                            {% empty %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            <h3>
+                                No Movies have been added yet.
+                            </h3>
+
+                            <li><a class="nav-link" href="{% url 'movies:new_movie'%}">Add Movie</a></li>
+                    
+                            {% endfor  %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
         </span>
+    </div>
+    <script src="main.js"></script>
+</body>
 
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-
-{% endblock content %}
+</html>

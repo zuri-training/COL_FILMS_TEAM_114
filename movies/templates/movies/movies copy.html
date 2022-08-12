@@ -44,3 +44,175 @@
 
 
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1>Lists of all posts</h1>
+
+<body>
+
+    <style>
+        p {
+            font-family: Roboto, Ariel;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .thumbnail {
+            width: 100%;
+        }
+
+        .search-bar {
+            display: block;
+        }
+
+        .author {}
+
+        .stats {}
+
+        .heading {
+            margin-top: 0px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            margin-bottom: 10px;
+
+        }
+
+        .preview {}
+
+        .video-info-grid {
+            display: grid;
+            grid-template-columns: 50px 1fr
+        }
+
+
+        .video-info {
+            margin-left: 10px;
+        }
+
+        .profile-picture {
+            width: 100%;
+            border-radius: 80px;
+
+        }
+
+        .thumbnail-row {
+            margin-bottom: 12px;
+
+        }
+
+        .author,
+        .stats {
+            font-size: 12px;
+            color: rgb(96, 96, 96);
+        }
+
+        .author {
+            margin-bottom: 6px;
+        }
+
+        .all-video-grid {
+            column-gap: 16px;
+            row-gap: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    </style>
+
+    <input class="search-bar" type="text" placeholder="Search">
+    <br>
+
+    <section class="all-video-grid">
+
+        {% for movie in page_obj %}
+        <section class="preview">
+            <section class="thumbnail-row">
+                <!-- <img class="thumbnail" src="{{ movie.author. }}" alt="first image"> -->
+                <a href="{% url 'movies:view_movie' movie.id %}">
+                    <video width="320" height="240" controlsList="nodownload">
+                        <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+                    </video>
+                </a>
+            </section>
+
+            <section class="video-info-grid">
+                {% if movie.author.userinfo.avatar %}
+                <section class="channel-picture">
+                    <img class="profile-picture" src="{{ movie.author.userinfo.avatar.url }}" alt="">
+                </section>
+                {% else %}
+                <section class="channel-picture">
+                    <img class="profile-picture" src="{% static 'dummy.png' %}" alt="">
+                </section>
+                {% endif %}
+
+                <section class="video-info">
+                    <p class="heading">
+                        {{ movie.title }}
+                    </p>
+
+                    <p class="author">
+                        <a href="{% url 'movies:view_profile' movie.id %}">{{movie.author}}</a>
+                    </p>
+
+                    <p class="stats">
+                        {{ movie.liked.count }} Likes · Updated : {{ movie.updated }}
+                    </p>
+                </section>
+            </section>
+        </section>
+
+
+        {% empty %}
+
+        <h3>
+            No Movies have been added yet.
+        </h3>
+
+        <li><a class="nav-link" href="{% url 'movies:new_movie'%}">Add Movie</a></li>
+
+        {% endfor %}
+    </section>
+
+
+</body>
+
+<div class="">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}

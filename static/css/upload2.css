@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family:'Inter', sans-serif;
+            /* outline: 1px solid salmon; */
+        }
+        h1{
+            font-size: 30px;
+            margin-top: 2em;
+        }
+        .one{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 8em;
+        }
+        .two{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .butt2{border-radius: 5px;
+        background-color: rgb(24, 129, 129);
+        border: none;
+        color: white;
+        margin-left: auto;
+            margin-right: auto;
+            display: block;
+        font-size: 20px;
+        padding: 15px;
+        width: 170px;
+        transition: all 0.5s;
+        cursor: pointer;
+      text-align: center;
+        bottom: 10px;
+
+      }
+      
+      .butt2 {
+        cursor: pointer;
+        
+        position: relative;
+        transition: 0.5s;
+      }
+      
+      .butt2 :after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      
+      .butt2:hover  {
+        padding-right: 25px;
+      }
+      
+      .butt2:hover .butt2:after {
+        opacity: 1;
+        right: 0;
+      }
+      @media screen and (max-width: 600px) {
+        /* Authenticated mobile .topnav */
+        .h1 {
+            width: 100%;
+            padding: 0 20px;
+        }
+        .butt2 {
+            margin: auto;
+        }
+        .two {
+          margin: auto;
+          width: 80%;
+      }
+       
+    }

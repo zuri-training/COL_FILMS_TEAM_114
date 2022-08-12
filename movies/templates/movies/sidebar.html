@@ -1,0 +1,89 @@
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+    
+    .side {
+    position: fixed;
+
+    width: 220px;
+    background-color: var(--txt);
+    }
+
+    .sidebar {
+    width: 100%;
+    height: 120vh;
+    color: var(--txt2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    align-items: center;
+    gap: 10px;
+    }
+
+    .sidebar h1 {
+    display: block;
+    padding: 30px 73px;
+    }
+
+    .sidebar .sidelist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    }
+
+    .sidelist li {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    }
+
+    .sidelist li:hover {
+    background-color: var(--bkg2);
+    }
+
+    .sidelist li a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--txt2);
+    gap: 10px;
+    }
+
+    .sidelist li a:hover {
+    color: var(--bkg);
+    filter: invert(43%) sepia(98%) saturate(2578%) hue-rotate(150deg) brightness(97%) contrast(101%);
+    }
+
+    .sidelist li a .icons {
+    width: 20px;
+    }
+
+    .topnav .rightnav .icons {
+        width: 22px;
+    }
+
+</style>
+{% load static %}
+
+<section class="side">
+    <nav class="sidebar">
+        <ul class="sidelist"><br><br>
+            <h1>Settings</h1>
+            <li><a href="{% url 'movies:index' %}"><img class="icons" src="{% static 'assets/home3.svg' %}"
+                        alt="">Home</a></li>
+            <li><a href="{% url 'movies:all_movies' %}"><img class="icons" src="{% static 'assets/library.svg' %} " alt="">Library</a></li>
+            <li><a href="{% url 'movies:new_movie' %}"><img class="icons" src="{% static 'assets/myvideo.svg' %}" alt="">Upload 
+                    Video</a></li>
+            <hr>
+            <li><a href="{% url 'accounts:profile' %}"><img class="icons" src="{% static 'assets/settings.svg' %}" alt="">Settings</a></li>
+            <li><a href="#"><img class="icons" src="{% static 'assets/help.svg' %}" alt="">Help</a>
+            </li>
+            {% if user.is_authenticated %}
+             <li><a href="{% url 'accounts:logout' %}">Log Out</a>
+            {% else %}
+            <li><a href="{% url 'accounts:login' %}">Log In</a> 
+            {% endif %}   
+            </li>
+        </ul>
+    </nav>
+</section>

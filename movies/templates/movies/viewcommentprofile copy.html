@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+<h2>Log in to your account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+    <h1>
+        User Details
+    </h1>
+    <h3>
+        {{ user.username }}
+        <br>
+        {{ user.userinfo.user_type }}
+
+    </h3> 
+
+    <h1>Lists of all User's Videos </h1>
+
+    {% for movie in movies %}
+
+    <a href="{% url 'movies:view_movie' movie.id %}">
+        <video width="320" height="240" controlsList="nodownload">
+            <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+        </video>
+    </a>
+
+    {% empty %}
+
+    <h3>
+        No movie Yet!
+    </h3>
+    {% endfor %}
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,11 @@ def  check_comment_owner(author, user):
 
 def index(request):
     """Returns to the Homepage"""
-    return render(request, "movies/index.html")
+    movies = Movie.objects.all().order_by("-created")
+
+    context = {'movies': movies}
+
+    return render(request, "movies/index.html", context)
 
 @login_required
 @student_only
@@ -82,11 +86,10 @@ def new_comment(request, movie_id):
             new_comment.movie = movie
             new_comment.comment_author = request.user
             new_comment.save()
-            return redirect("movies:view_movie", movie_id=movie_id)
+            return redirect("movies:view_movie", movie_id=movie.id)
                
     context = {"form" : form, "movie" : movie} 
-    return render(request, "movies/new_comment.html", context)
-
+    return render(request, "movies/view_movie.html", context)
 
 @login_required
 def edit_comment(request, comment_id):
@@ -183,7 +186,7 @@ def view_profile(request, movie_id):
     return render(request, 'movies/viewprofile.html', context)
 
 @login_required
-def view_comment_profile(request,comment_id):
+def view_comment_profile(request, comment_id):
     comment = MovieComment.objects.get(id=comment_id)
     
     user = comment.comment_author
@@ -194,4 +197,4 @@ def view_comment_profile(request,comment_id):
 
     context = {'favourites' : favourites, 'movies' : movies, 'user' : user}
 
-    return render(request, 'movies/viewprofile.html', context)
+    return render(request, 'movies/viewcommentprofile.html', context)

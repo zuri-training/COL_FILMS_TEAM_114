@@ -38,16 +38,12 @@ urlpatterns = [
     
     path('view-profile/<int:movie_id>/', views.view_profile, name='view_profile'),
 
-    path('viewcommentprofile/<int:comment_id>/', views.view_comment_profile, name='view_commenter'),   
+    path('viewcommentprofile/<int:comment_id>/', views.view_comment_profile, name='view_comment_profile'),   
 
     path('like/<int:movie_id>/', views.like_movie, name='like_movie'),
 
     path('view_movie/<int:movie_id>/new_comment/', views.new_comment, name='new_comment'),
 
     path('edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
-
-    #path('accounts/', include('django.contrib.auth.urls')),
-
-    # path("accounts/register/", views.register, name="register"),
 
 ]

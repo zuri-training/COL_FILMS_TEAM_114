@@ -1,86 +1,252 @@
-{% extends "base.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch page</title>
+    <link rel="stylesheet" href="{% static 'css/watch.css' %}">
+</head>
 
-<h3>{{ movie.title }}</h3>
-    <div style="margin: 10px auto;">
-        <video autoplay="autoplay" controls controlsList="nodownload preload="preload">
-            <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4"></source>
-        </video>
-    </div>  
+<body>
+    <!-- Registered Nav Bar HTML -->
 
-    <div style="margin: 10px auto;">
-        <ul>
-            <li>
-                Movie Author: <a href="{% url 'movies:view_profile' movie.id %}">{{movie.author}}</a>
-            </li>
-            <li>
-                {% if movie.description %}
-                    Movie Description: {{ movie.description }}
-                {% else %}
-                    Movie Description: No Description has been added to this video!
-                {% endif %}
-            </li>
-
-            <li>
-                <form action="{% url 'movies:like_movie' movie.id %}" method="POST">
-                    {% csrf_token %}
-                    {% if lik  %}
-                        <button style="background-color: red;" type="submit">Unlike</button>
-                    {% else %}
-                        <button style="background-color: greenyellow;" type="submit">Like</button>
-                    {% endif %}
-                </form>
-                {% if movie.liked.count < 1 %}
-                    No Likes Yet!
-                {% elif movie.liked.count == 1 %}
-                    1 Like
-                {% else %}
-                <strong>{{ movie.liked.count }} Likes </strong>
-                {% endif %}
-            </li>
-
-            <li>
-                {% if fav %}
-                    <a href="{% url 'accounts:add_favourite' movie.id %}">Remove from Favourites</a>
-                {% else %}
-                    <a href="{% url 'accounts:add_favourite' movie.id %}">Add to Favourites</a>
-                {% endif %}
-            </li>
-            {% if request.user == movie.author %}
-                <li><a href="{% url 'movies:edit_movie' movie.id %}">Edit Movie</a></li>
-                <li><a href="{% url 'movies:delete_movie' movie.id %}">Delete</a></li>           
-            {% endif %}
-                
-            <li><a href="{{movie.video.url}}">Download</a></li>
-            <li><a href="{% url 'movies:new_comment' movie.id %}">Add Comment</a></li>
-
-        </ul>
+    <div class="container">
+        {% include 'movies/navbar.html' %}
     </div>
+    
+    <div class="container play-container">
+        <div class="row">
+            <div class="play-video">
+                <video controls autoplay>
+                    <source src="{{ MEDIA_URL }}/{{ movie.video }}" type="video/mp4">
+                </video>
+                <div class="play-back-div">
+                    <div class="play-back-a">
+                        <a class="image-a" href="#"><img
+                                src="{% static 'assets/Watch page/Back-forward.png' %}"></a>
+                        <a class="image-a" href="#"><img
+                                src="{% static 'assets/Watch page/play.png' %}"></a>
+                        <a class="image-a" href=""><img
+                                src="{% static 'assets/Watch page/fast-forward.png' %"></a>
+                        <a class="image-a volume" href="#"><img
+                                src="{% static 'assets/Watch page/volume-up-fill.png' %}"></a>
+                    </div>
+                    <div class="play-back-b">
+                        <a class="image-b" href="#"><img
+                                src="{% static 'assets/Watch page/settings.png' %}"></a>
+                        <a class="image-b" href=""> 0:00/15:00</a>
+                        <a class="image-b" href=""><img
+                                src="{% static 'assets/Watch page/maximize-2.png' %}"></a>
+                    </div>
+                </div>
 
-<h1>Comments</h1>
-{% for comment in comments %}
-    <ul>
-        <li> 
-            {% if comment.comment_author.userinfo.avatar %}
-                <a href="{{ movie.author }}"><img style="width:50px;" src="{{ comment.comment_author.userinfo.avatar.url }}" alt="{{ comment.comment_author }} avatar"></a>
-            {% else %}
-                nawa <a href="{{ movie.author }}"><img src="{% static 'dummy.png' %}" alt="My image"></a>  
-            {% endif %}
+                <div class="play-video-info">
+                    <div class="video-heading">
+                        <h3>{{ movie.title }}</h3>
+                        <div>
+                            <a href="">
+                                <form action="{% url 'movies:like_movie' movie.id %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if lik %}
+                                    <button style="background-color: red;" type="submit">Unlike</button>
+                                    {% else %}
+                                    <button style="background-color: greenyellow;" type="submit">Like</button>
+                                    {% endif %}
+                                </form>
+                                {% if movie.liked.count == 1 %} 
+                                          1 Like 
+                                {% else %} 
+                                <strong>
+                                    {{ movie.liked.count }} Likes 
+                                </strong>
+                                {% endif %}
+                            </a>
 
-            <br>
-            Comment Author: <a href="{% url 'movies:view_commenter' comment.id %}">{{ comment.comment_author }}</a>
-            <p>Comment Author Type - {{ comment.comment_author.userinfo.user_type }} </p>
-            <p><strong>Date Published</strong> - {{ comment.date_added }}</p>
-            <p>Comment Text: {{ comment.comment_text}} </p>
+                            <a href=""><img
+                                    src="{% static 'assets/Watch page/share-line.png' %}">share</a>
+                            <a href=""><img src="{% static 'assets/Watch page/hq-line.png' %}">Video
+                                quality</a>
+                            <a href=""><img
+                                    src="{% static 'assets/Watch page/heart-add-line.png' %}">
+                                    {% if fav %}
+                                    <a href="{% url 'accounts:add_favourite' movie.id %}">Unsave</a>
+                                    {% else %}
+                                    <a href="{% url 'accounts:add_favourite' movie.id %}">Save</a>
+                                    {% endif %}
+                                </a>
+                        </div>
+                    </div>
+                    <p>0 Views &bull; {{movie.created}}</p>
+                </div>
+                <hr>
+                <div class="publisher">
+                    {% if movie.author.userinfo.avatar %}
+                    <a href="{% url 'movies:view_profile' movie.id  %}"><img style="width:50px;" src="{{ movie.author.userinfo.avatar.url }}" alt="{{ movie.author }} avatar"></a>
+                    {% else %}
+                    <a href="{% url 'movies:view_profile' movie.id  %}"><img src="{% static 'dummy.png' %}" alt="My image"></a>
+                    {% endif %}
+                    <div>
+                        <p>
+                            <a href="{% url 'movies:view_profile' movie.id  %}">{{movie.author}}</a>
+                        </p>
+                        <span>0 Subscribers</span>
+                        <div class="sub-button">
+                            <button type="button">Subscribe</button>
+                        </div>
+                    </div>
+                    <p>{{movie.description}}</p>
+                </div>
+                
+                <div class="vid-description">
+                    <h4>Drop a comment</h4>
 
-            {% if request.user == comment.comment_author %}
-                <a href="{% url 'movies:edit_comment' comment.id %}">Edit Comment</a>
-            {% else %}
+                    <div class="add-comment">                    
+                        
+                        {% if request.user.userinfo.avatar %}
+                        <img style="width:50px;" src="{{ request.user.userinfo.avatar.url }}"alt="Your avatar">
+                        {% else %}
+                        <img src="{% static 'dummy.png' %}" alt="My image">
+                        {% endif %}
+                        
+                        <form method="post" action="{% url 'movies:new_comment' movie.id %}" value="{{ request.POST.comment_text }}">
+                            {% csrf_token %}
+                                <textarea type="text" name="comment_text" value="{{ request.POST.comment_text }}"
+                                    placeholder="Add your comment here">
+                                </textarea>
 
-            {% endif %}
-        </li>
-    </ul>
-{% endfor %}
-{% endblock content %}
+                                <div class="comment-button">
+                                    <button>Post comment</button>
+                                </div>
+                        </form>            
+                    </div>
+
+                {% for comment in comments %}    
+                <div class="old-comment">
+
+                    {% if comment.comment_author.userinfo.avatar %}
+                    <a href="{% url 'movies:view_comment_profile' comment.id  %}"><img style="width:50px;"
+                            src="{{ comment.comment_author.userinfo.avatar.url }}" alt=""></a>
+                    
+                    {% else %}
+                    <a href="{% url 'movies:view_comment_profile' comment.id  %}"><img src="{% static 'dummy.png' %}" alt="My image"></a>
+                    {% endif %}
+
+                    {% if comment.comment_author.userinfo.avatar %}
+                    <a href="{% url 'movies:view_comment_profile' comment.id  %}"><img style="width:50px;" src="{{ comment.comment_author.userinfo.avatar.url }}" alt=""></a>
+                    
+                    {% else %}
+                    <a href="{% url 'movies:view_comment_profile' comment.id  %}"><img src="{% static 'dummy.png' %}" alt="My image"></a>
+                    {% endif %}
+
+
+                    <div>
+                        <h3> 
+                            <a href="{% url 'movies:view_comment_profile' comment.id  %}">{{ comment.comment_author }}</a>
+                            <span>{{comment.date_added}}</span>
+                        </h3>
+                        <p>{{comment.comment_text}}</p>
+                        <div class="comment-action">
+                                {% if request.user == comment.comment_author %}
+                                <span>
+                                    <a href="{% url 'movies:edit_comment' comment.id %}">EDIT</a>
+                                </span>
+                                {% endif %}
+                            <!-- <a href="">View replies <span><img src="/beta/COL_FILMS_TEAM_114/" alt=""></span></a> -->
+                            <div class="comment-action-icons">
+                                <img src="{% static 'assets/Watch page/thumb-up-line.png' %}">
+                                <span>0</span>
+                                <img src="{% static 'assets/Watch page/thumb-down-line.png' %}">
+                                <span>0</span>
+                                <!-- {% if request.user == comment.comment_author %}
+                                <span>
+                                    <a href="{% url 'movies:edit_comment' comment.id %}">EDIT</a>
+                                </span>
+                                {% endif %} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                </div>
+                </div>
+                <div class="right-sidebar">
+                    <h3>Selected just for you</h3>
+                
+                    <div class="side-video-list">
+                        <a href="" class="small-thumbnail"><img
+                                src="{% static 'assets/Watch page/Frame 61.png' %}"></a>
+                        <div class="video-info-container">
+                            <div>
+                                <button"><img style="border-radius: 100%; width: 32px;"
+                                        src="{% static 'assets/Watch page/Ellipse 5.png' %}" alt=""></button>
+                            </div>
+                            <div class="vid-info">
+                                <a href="">Why Business sucks by a business student</a>
+                                <p>Your Business Girl</p>
+                                <p>100k Views | 5 months ago</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div>
+                        <div class="sneak-peaks-text flex">
+                            <img src="/beta/COL_FILMS_TEAM_114/static/assets/Watch page/sneak peak.svg" alt="">
+                            <p>Sneak Peaks</p>
+                        </div>
+                        <div class="sneak-peaks-img flex">
+                            <img src="/beta/COL_FILMS_TEAM_114/static/assets//Watch page/Rectangle 114.png" alt="">
+                            <img src="/beta/COL_FILMS_TEAM_114/static/assets/Watch page/Rectangle 115.png" alt="">
+                            <img src="/beta/COL_FILMS_TEAM_114/static/assets/Watch page/Rectangle 116.png" alt="">
+                        </div>
+                    </div>
+                
+                    <div class="side-video-list">
+                        <a href="" class="small-thumbnail"><img
+                                src="{% static 'assets/Watch page/Frame 61-1.png' %}"></a>
+                        <div class="video-info-container">
+                            <div>
+                                <button"><img style="border-radius: 100%; width: 32px;"
+                                        src="/beta/COL_FILMS_TEAM_114/static/assets/Watch page/Ellipse 5-1.png" alt=""></button>
+                            </div>
+                            <div class="vid-info">
+                                <a href="">Teaching the art of optical tricks professionally</a>
+                                <p>Your Business Guy</p>
+                                <p>100k Views | 5 months ago</p>
+                            </div>
+                        </div>
+                
+                    </div>
+                    <div class="side-video-list">
+                        <a href="" class="small-thumbnail"><img
+                                src="{% static 'assets/Watch page/Frame 61-2.png' %}"></a>
+                        <div class="video-info-container">
+                            <div>
+                                <button"><img style="border-radius: 100%; width: 32px;"
+                                        src="{% static 'assets/Watch page/Ellipse 5-2.png' %}" alt=""></button>
+                            </div>
+                            <div class="vid-info">
+                                <a href="">10 DIY ways to make crafty photo Frames!!!</a>
+                                <p>Your Business Guy</p>
+                                <p>100k Views | 5 months ago</p>
+                            </div>
+                        </div>
+                
+                    </div>
+                    <h3>from your last watch</h3>
+                    <div class="side-video-list">
+                        <a href="" class="small-thumbnail"><img
+                                src="{% static 'assets/Watch page/Frame 61-3.png' %}"></a>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                
+                </body>
+                
+                </html>
