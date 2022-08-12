@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: var(--font1);
+            /* outline: 1px solid green; */
+        }
+
+        :root {
+            --bkg: #00A9A5;
+            --bkg2: #F5F5F5;
+            --txt: #fff;
+            --txt2: #424242;
+            --font1: 'Inter', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            /* background-color: rgb(180, 171, 189); */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ffffff;
+        }
+
+        /* Unregistered Nav Bar */
+        .unregistered {
+            position: relative;
+            z-index: 5;
+            padding: 10px 40px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 0px 42px rgba(0, 27, 29, 0.08);
+        }
+
+        .leftnav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .leftnav img {
+            width: 125px;
+        }
+
+        .rightnav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .rightnav .navlinks {
+            display: flex;
+            gap: 50px;
+        }
+
+        .navlinks a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--txt2);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li button {
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            border-radius: 2.5px;
+            background-color: var(--bkg);
+            color: var(--txt);
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+
+        .altcolor {
+            background-color: #CCEEED;
+            color: var(--bkg);
+        }
+
+        @media screen and (max-width: 400px) {
+            nav {
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .leftnav img {
+                width: 80px;
+            }
+
+            .rightnav .navlinks,
+            .hidden {
+                display: none;
+            }
+
+            nav .middle {
+                display: none;
+            }
+
+            .rightnav .mobile {
+                background-color: var(--bkg);
+                color: var(--txt);
+            }
+        }
+
+        /* Nav Ends. */
+
+        .hero {
+            width: 100%;
+            background-color: var(--txt);
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            background-image: url("assets/heroleft.png");
+            background-size: 14%;
+            background-repeat: no-repeat;
+        }
+
+        .heroinfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            gap: 5px;
+        }
+
+        .heroinfo h1 {
+            font-size: 60px;
+            font-weight: 700;
+            color: #1e2775;
+        }
+
+        .heroinfo h2 {
+            font-size: 40px;
+            font-weight: 500;
+            color: #5975ff;
+        }
+
+        .infotext p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .buttons button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 14px 28px;
+            color: var(--bkg2);
+            background-color: var(--bkg);
+            border: none;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .buttons .btncolor {
+            background-color: #CCEEED;
+            color: #005452;
+            ;
+        }
+
+        .heroimg {
+            width: 50%;
+        }
+
+        .heroimg img {
+            width: 100%;
+        }
+
+        .info1 {
+            background: linear-gradient(119.58deg, #2C4B4B 40.59%, #0E202B 88.55%);
+            height: 740px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 80px;
+            color: var(--txt);
+        }
+
+        .info1text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .info1text h1 {
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .info1text p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .info1text button {
+            padding: 14px 28px;
+            color: var(--bkg2);
+            background-color: var(--bkg);
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .info1 img {
+            width: 670px;
+        }
+
+        .info2 {
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--txt);
+            gap: 50px;
+        }
+
+        .info2text h1 {
+            font-weight: 400;
+            font-size: 40px;
+            color: #000F10;
+        }
+
+        .info2text p {
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            color: #000F10;
+            ;
+        }
+
+        .info2text span {
+            font-weight: 700;
+        }
+
+        .info2 img {
+            width: 100%;
+        }
+
+        .info3 {
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #CCEEED;
+            gap: 50px;
+        }
+
+        .info3text h1 {
+            font-size: 60px;
+            color: #005452;
+        }
+
+        .info3text p {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .info3text span {
+            color: #00A9A5;
+        }
+
+        .info3 img {
+            width: 750px;
+        }
+
+        .info4 {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 65px;
+            overflow: hidden;
+            height: 610px;
+        }
+
+        .info4flex {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .info4flex .icons {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .carousel {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgcard {
+            width: 330px;
+            height: 330px;
+            border-radius: 25px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: var(--txt);
+            gap: 10px;
+        }
+
+        .img1 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("static/assets/card1.png");
+        }
+
+        .img2 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("static/assets/card2.png");
+        }
+
+        .img3 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("static/assets/card3.png");
+        }
+
+        .img4 {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.73)), url("static/assets/card4.png");
+        }
+
+        .cta {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 330px;
+            gap: 30px;
+            background-color: #DEE3FF;
+        }
+
+        .cta_texts {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+            color: var(--txt2);
+        }
+
+        .cta_texts h1 {
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .cta_texts p {
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .cta button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 14px 28px;
+            color: var(--txt);
+            background-color: #5975FF;
+            ;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .footernav {
+            height: 230px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .footerflex {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 110px;
+        }
+
+        .footerflex ul {
+            display: flex;
+            flex-direction: row;
+            gap: 65px;
+        }
+
+        .footerflex ul li a {
+            color: #000F10;
+        }
+
+        .footernav .span {
+            width: 100px;
+        }
+
+        .footertext {
+            display: flex;
+            flex-direction: column;
+            color: var(--txt2);
+            gap: 5px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 10px;
+        }
+
+        @media screen and (max-width: 400px) {
+            .hero {
+                width: 100%;
+                background-color: var(--txt);
+            }
+
+            .flex {
+                display: flex;
+                width: 100%;
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+                background-image: none;
+                gap: 50px;
+                padding: 30px 0;
+            }
+
+            .heroimg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+
+            .heroimg img {
+                width: 360px;
+            }
+
+            .heroinfo {
+                padding: 0 40px;
+            }
+
+            .heroinfo h1 {
+                font-size: 48px;
+                text-align: center;
+            }
+
+            .heroinfo h2 {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .heroinfo .infotext p {
+                font-size: 14px;
+                text-align: center;
+
+            }
+
+            .infotext .buttons {
+                justify-content: center;
+                align-items: center;
+                gap: 15px
+            }
+
+            .infotext .buttons button {
+                font-size: 14px;
+                height: 50px;
+                padding: 12px 28px;
+            }
+
+            .info1 {
+                padding-top: 60px;
+                height: 485px;
+            }
+
+            .info1 .info1text h1 {
+                font-size: 35px;
+            }
+
+            .info1 .info1text p {
+                font-size: 12px;
+            }
+
+            .info1 img {
+                width: 370px;
+            }
+
+            .info2 {
+                height: 385px;
+            }
+
+            .info2text h1 {
+                font-size: 28px;
+                font-weight: 500;
+                padding-bottom: 10px;
+            }
+
+            .info2text p {
+                font-size: 12px;
+            }
+
+            .info2 img {
+                width: 385px;
+            }
+
+            .info3 {
+                height: 440px;
+                flex-direction: column;
+            }
+
+            .info3text h1 {
+                font-size: 28px;
+                text-align: center;
+            }
+
+            .info3text p {
+                padding: 0 60px;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .info3text p br {
+                display: none;
+            }
+
+            .info3 img {
+                width: 390px;
+            }
+
+            .info4 {
+                height: 360px;
+            }
+
+            .info4flex .icons {
+                display: none;
+            }
+
+            .carousel {
+                gap: 7px;
+            }
+
+            .imgcard {
+                width: 200px;
+                height: 140px;
+                /* border-radius: 5px 5px 5px 5px; */
+                padding: 8px 12px;
+            }
+
+            .carousel .imgcard h3 {
+                font-size: 14px;
+            }
+
+            .carousel .imgcard p {
+                font-size: 5px;
+            }
+
+            .footernav {
+                flex-direction: column;
+                height: 330px;
+                padding: 0 20px;
+            }
+
+            .footerflex {
+                flex-direction: column;
+                padding: 0;
+                gap: 65px;
+            }
+
+            .footerflex ul {
+                gap: 25px;
+            }
+
+            .footernav .span {
+                display: none;
+            }
+
+            .footertext {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="hero">
+        <div class="flex">
+            <div class="heroinfo">
+                <h1>Share your world</h1>
+                <h2>in 15 mins or less</h2>
+                <div class="infotext">
+                    <p>A tutorial, a tour, a short movie or anything you want to watch,<br>
+                        Varsity Vine is here for you.</p>
+                    <div class="buttons">
+                        <button onclick="window.location.href='https://'">Explore <img
+                                src="static/assets/forwardarrow.svg" alt=""></button>
+                        <button class="btncolor" onclick="window.location.href='https://'">Upload a video</button>
+                    </div>
+                </div>
+            </div>
+            <div class="heroimg">
+                <img src="static/assets/heroright.png" alt="">
+            </div>
+        </div>
+    </main>
+    <section class="info1">
+        <div class="info1text">
+            <h1>As clear as day</h1>
+            <p>Watch HD videos in real time. No stress, no delay.</p>
+            <button onclick="window.location.href='https://'">Try it, it's free!</button>
+        </div>
+        <img src="static/assets/rod.png" alt="">
+    </section>
+    <section class="info2">
+        <div class="info2text">
+            <h1>Find videos on <span>anything</span></h1>
+            <p>Watch anything. No ads. No hidden charges</p>
+        </div>
+        <div class="imagecards">
+            <img src="static/assets/imagecard.png" alt="">
+        </div>
+    </section>
+    <section class="info3">
+        <div class="info3text">
+            <h1><span>Watch</span> anywhere<span>,</span><br> anytime</h1>
+            <p>Whether you're in your home or on the go,
+                stream VVines video's<br> anywhere, anytime.</p>
+        </div>
+        <img src="static/assets/phone.png" alt="">
+    </section>
+    <section class="info4">
+        <h2>Latest on the Vine</h2>
+        <div class="info4flex">
+            <!-- <div class="icons">
+                <img src="static/assets/backarrowicon.svg" alt="">
+                <img src="static/assets/forwardarrowicon.svg" alt="">
+            </div> -->
+            <div class="carousel">
+                <div class="img1 imgcard">
+                    <h3>Touring the Amazon</h3>
+                    <p>The Flutter Team</p>
+                </div>
+                <div class="img2 imgcard">
+                    <h3>Explore Thankgiving week at Harvard</h3>
+                    <p>The Flutter Team</p>
+                </div>
+                <div class="img3 imgcard">
+                    <h3>Introduction to Calculus - A series</h3>
+                    <p>The Flutter Team</p>
+                </div>
+                <div class="img4 imgcard">
+                    <h3>The scholar Fellowship Program for Africans</h3>
+                    <p>The Flutter Team</p>
+                </div>
+                <div class="img1 imgcard">
+                    <h3>Touring The Amazon</h3>
+                    <p>The Flutter Team</p>
+                </div>
+                <div class="img2 imgcard">
+                    <h3>Explore Thankgiving week at Harvard</h3>
+                    <p>The Flutter Team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta">
+        <div class="cta_texts">
+            <h1>Ready?</h1>
+            <p>Try it, it's free</p>
+        </div>
+        <button>Join Varsity Vines now <img src="static/assets/forwardarrow.svg" alt=""></button>
+    </section>
+    <footer>
+        <div class="footernav">
+            <div class="footerflex">
+                <img src="static/assets/varsity vines.svg" alt="" style="width: 115px;">
+                <ul>
+                    <li><a href="">Creators</a></li>
+                    <li><a href="">Help centre</a></li>
+                    <li><a href="">Join us</a></li>
+                    <li><a href="">Upload</a></li>
+                </ul>
+                <span class="span"></span>
+            </div>
+            <div class="footertext">
+                <p>Ⓒ 2022 Varsity Vines</p>
+                <p>All rights reserved. Made for students, by students</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

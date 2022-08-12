@@ -1,0 +1,287 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base page</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@100;300&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* outline: 1px solid green; */
+        }
+
+        :root {
+            --bkg: #00A9A5;
+            --txt: #fff;
+            --txt2: #424242;
+            --font1: 'Inter', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            background-color: rgb(180, 171, 189);
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .container {
+            background-color: #ffffff;
+        }
+
+
+        /* Unregistered Nav Bar */
+        nav {
+            margin: 0 40px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        .leftnav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .middle {
+            display: flex;
+            gap: 25px;
+        }
+
+        .search {
+            display: flex;
+            gap: 0;
+        }
+
+        .search input {
+            font-family: var(--font1);
+            font-weight: 700;
+            font-size: 14px;
+            color: #A6A6A6;
+            ;
+            width: 480px;
+            height: 40px;
+            padding: 12px 16px;
+            border-radius: 4px 0px 0px 4px;
+            border: 1px solid #A6A6A6;
+        }
+
+        .search button {
+            width: 50px;
+            height: 40px;
+            border-radius: 0px 4px 4px 0px;
+            border: 1px solid #A6A6A6;
+            cursor: pointer;
+        }
+
+        .search button img {
+            width: 18px;
+        }
+
+        .middle .micbtn {
+            background-color: transparent;
+            border: none;
+        }
+
+        .middle button img {
+            width: 18px;
+            height: 22px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li button {
+            font-family: var(--font1);
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            border-radius: 2.5px;
+            background-color: var(--bkg);
+            color: var(--txt);
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+
+        /* Registered Nav Bar */
+        nav .rightnav {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rightnav button {
+            background-color: transparent;
+            border: none;
+        }
+
+        nav .rightnav .icons {
+            width: 22px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <!-- This will be used to store elements that will exist on other pages eg
+        Navigation Bar, Likes and Comments, etc. -->
+
+        {% if user.is_authenticated %}
+        {% if user.userinfo.user_type == "Student" %}
+        <!-- Registered Nav Bar HTML -->
+        <div class="container">
+            <nav class="registered">
+                <div class="leftnav">
+                    <a href="{% url 'movies:index' %}"><img src="{% static 'assets/hamburger.png' %}" alt=""></a>
+                    <a href="{% url 'movies:index' %}"><img src="{% static 'assets/Icon.png' %}" alt=""></a>
+                </div>
+                <div class="middle">
+
+                    <div class="search">
+                        <form action="{% url 'movies:search_movies' %}" method="get" value="{{request.GET.q}}>
+                            {% csrf_token %}
+                            <input type='text' name='q' value='{{request.GET.q}}' placeholder='Search posts'>                           
+                            <button>
+                                <img src="{% static 'assets/Search.png' %}" alt="search button">
+                            </button>
+                        </form>
+                    </div>
+
+                    <button class="micbtn"><img class="mic" src="{% static 'assets/Mic.png' %}" alt=""></button>
+                </div>
+
+                <div class="rightnav">
+                    <button><img class="icons" src="assets/video_upload.png" alt=""></button>
+                    <button><img class="icons" src="assets/bell.png" alt=""></button>
+                    
+                    <form action="{% url 'accounts:profile' %}" method="post">
+                        {% csrf_token %}
+                        <li><button><img style="border-radius: 100%; width: 32px;" src="{{ request.user.userinfo.avatar.url }}" alt=""></button></li>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+        <nav>
+            <ul>
+                <li>Hello, {{ user.username }}</li>
+                <li>You are a {{ user.userinfo.user_type }}</li>
+                <li><a class="nav-link" href="{% url 'movies:index'%}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'movies:all_movies'%}">Movies</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:list_favourites' %}">Favourites</a></li>
+                <li><a class="nav-link" href="{% url 'movies:new_movie'%}">Add Movie</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a></li>
+            </ul>
+        </nav>
+        
+        {% else %}
+
+        <div class="container">
+            <nav class="registered">
+                <div class="leftnav">
+                    <a href="{% url 'movies:index' %}"><img src="{% static 'assets/hamburger.png' %}" alt=""></a>
+                    <a href="{% url 'movies:index' %}"><img src="{% static 'assets/Icon.png' %}" alt=""></a>
+                </div>
+                <div class="middle">
+                    <div class="search">
+                        <input type="search" placeholder="Search?" id="">
+                        <button><img src="{% static 'assets/Search.png' %}" alt=""></button>
+                    </div>
+                    <button class="micbtn"><img class="mic" src="{% static 'assets/Mic.png' %}" alt=""></button>
+                </div>
+                <div class="rightnav">
+                    <button><img class="icons" src="assets/video_upload.png" alt=""></button>
+                    <button><img class="icons" src="assets/bell.png" alt=""></button>
+
+                    <form action="{% url 'accounts:profile' %}" method="post">
+                        {% csrf_token %}
+                        <li><button><img style="border-radius: 100%; width: 32px;" src="{{ request.user.userinfo.avatar.url }}" alt=""></button></li>
+                    </form>            
+                </div>
+            </nav>
+        </div>
+
+        <nav>
+            <ul>
+                <li>Hello, {{ user.username }}</li>
+                <li>You are a {{ user.userinfo.user_type }}</li>
+                <li><a class="nav-link" href="{% url 'movies:index'%}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'movies:all_movies'%}">Movies</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:list_favourites' %}">Favourites</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a></li>
+            </ul>
+        </nav>
+        
+        {% endif %}   
+        
+        {% else %}
+
+    <!-- Unregistered Nav Bar HTML -->
+
+        <div class="container">
+            <nav class="unregistered">
+                <div class="leftnav">
+                    <a href="{% url 'movies:index' %}"><img src="{% static 'assets/hamburger.png' %}" alt=""></a>
+                    <a href="{% url 'movies:index' %}"><img src="{% static 'assets/Icon.png' %}" alt=""></a>
+                </div>
+                <div class="middle">
+                    <div class="search">
+                        <input type="search" placeholder="Search?" id="">
+                        <button><img src="{% static 'assets/Search.png' %}" alt=""></button>
+                    </div>
+                    <button class="micbtn"><img class="mic" src="{% static 'assets/Mic.png' %}" alt=""></button>
+                </div>
+                <ul>
+                    <form action="{% url 'accounts:login' %}" method="post">
+                        {% csrf_token %}
+                        <li><button>Sign In</button></li>
+                    </form>
+    
+                    <form action="{% url 'accounts:login' %}" method="post">
+                        {% csrf_token %}
+                        <li><button style="background-color: #EEEEEE; color:#00A9A5">Sign Up</button></li>
+                        </li>
+                    </form>
+                </ul>
+            </nav>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a class="nav-link" href="{% url 'movies:index' %}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'movies:all_movies' %}">Movies</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:register' %}">Sign Up</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
+            </ul>
+        </nav>
+
+        {% endif %}
+    </header>
+
+    {% block content %}
+    
+    {% endblock content %}
+</body>
+
+</html>

@@ -12,13 +12,16 @@ ACCOUNT_TYPE = (
 class UserInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    user_type = models.CharField(max_length=10,choices=ACCOUNT_TYPE)
+    user_type = models.CharField(max_length=10)
 
+    school = models.CharField(max_length=100,null=True, blank=True, verbose_name="school")
+
+    gender = models.CharField(max_length=10)
 
     #these are extended models features
     #user_type = models.CharField(max_length=6,null=True)
 
-    avatar = models.FileField(upload_to='avatar/', null=True, verbose_name="Avatar")
+    avatar = models.FileField(upload_to='avatar/', null=True, blank=True, verbose_name="Avatar")
 
     def __str__(self):
         return self.user.username

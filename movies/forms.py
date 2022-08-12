@@ -41,4 +41,4 @@ class CustomUserCreationForm(UserCreationForm):
 class UserInfoForm(forms.ModelForm):  
     class Meta:
         model = UserInfo
-        fields = {'user_type' : '', 'avatar': ''} 
+        fields = {'user_type' : '','school': '', 'avatar': ''} 

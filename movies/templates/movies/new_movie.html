@@ -1,18 +1,118 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Uploadui</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-<fieldset name="Video File Upload and Display">
-	{% if msg %} {% autoescape off %} {{ msg }} {% endautoescape %} {% endif %}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			list-style: none;
+			text-decoration: none;
+			font-family: 'Inter', sans-serif;
+			/* outline: 1px solid green; */
+		}
 
-	<script>
-		var _validFileExtensions = [".mp4", ".mov"];
-		function Validate(oForm) {
-			var arrInputs = oForm.getElementsByTagName("input");
-			for (var i = 0; i < arrInputs.length; i++) {
-				var oInput = arrInputs[i]; if (oInput.type == "file") {
-					var
-					sFileName = oInput.value; 
+		:root {
+			--bkg: #00A9A5;
+			--bkg2: #F5F5F5;
+			--txt: #fff;
+			--txt2: #424242;
+			--font1: 'Inter', sans-serif;
+		}
+
+		.frame {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: stretch;
+			width: 60%;
+			margin: 0 auto;
+			padding: 40px;
+			border-radius: 25px;
+			border: 1px solid var(--bkg);
+		}
+
+		form label {
+			font-size: 20px;
+			font-weight: 700;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			color: var(--txt2);
+		}
+
+		form input {
+			color: var(--txt2);
+			padding: 15px 20px;
+			font-size: 16px;
+			font-weight: 500;
+			width: 100%;
+			border: 1px solid var(--txt2);
+			border-radius: 5px;
+		}
+
+		form textarea {
+			padding: 15px 20px;
+			resize: none;
+			border: 1px solid var(--txt2);
+			border-radius: 5px;
+		}
+
+		.file-input label,
+		.file-input input {
+			font-size: 15px;
+			display: flex;
+			flex-direction: row;
+			gap: 40px;
+			border: none;
+		}
+
+		form .submit {
+			width: 220px;
+			margin: 0 auto;
+			border: none;
+			padding: 12px 20px;
+			background-color: var(--bkg);
+			color: var(--txt);
+			font-size: 20px;
+			font-weight: 700;
+		}
+	</style>
+	{% load static %}
+	
+	{% include 'movies/sidebar.html' %}
+
+</head>
+
+
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="frame">
+		<script>
+			var _validFileExtensions = [".mp4", ".mov"];
+			function Validate(oForm) {
+				var arrInputs = oForm.getElementsByTagName("input");
+				for (var i = 0; i < arrInputs.length; i++) {
+					var oInput = arrInputs[i]; if (oInput.type == "file") {
+						var
+							sFileName = oInput.value;
 						var blnValid = false;
 						for (var j = 0; j < _validFileExtensions.length; j++) {
 							var sCurExtension = _validFileExtensions[j]; if
@@ -22,56 +122,47 @@
 							alert("Invalid File Format, allowed extensions are: " + _validFileExtensions.join(" , "));
 							return false;
 						}
+					}
 				}
+
+				return true;
 			}
+		</script>	
 
-			return true;
-		}
-	</script>
-
-	<form method="post" action="{% url 'movies:new_movie' %}" enctype="multipart/form-data" onsubmit="return Validate(this);">
-		
+		<form method="post" action="{% url 'movies:new_movie' %}"
+		enctype="multipart/form-data" onsubmit="return Validate(this);">
 		{% csrf_token %}
-				<label>Add Video Title</label>&nbsp;&nbsp;
-				<br>
-				<input type="text" name="title" autocomplete="off" >
-				<br>
-				<br>
-				<label>Add Video Description</label>&nbsp;&nbsp;
-				<br>
-				<input type="text" name="Description" autocomplete="on">
-				<br>
-				<br>
-				<label>Browse and select a video file</label>&nbsp;&nbsp;
-				<br>
-				<input type="file" name="video" autocomplete="off" required accept="video/*">
-				
-				<script>
-					// create the video element but don't add it to the page
-					var vid = document.createElement('video');
+			
+			<p><label for="title">Video Title:<input type="text" name="title" autocomplete="off" placeholder="Enter Video Title" required></label></p>
+			<p><label for="description">Video Description: <textarea name="description" id="" cols="30"
+						rows="4"></textarea></label></p>
+			<p><input class="file" type="file" name="video" id="" required accept="video/*"></p>
+			
+			<script>
+				// create the video element but don't add it to the page
+				var vid = document.createElement('video');
 
-					document.querySelector('input[name = "video"]').addEventListener('change', function valid() {
-						// create url to use as the src of the video
-						var fileURL = URL.createObjectURL(this.files[0]);
+				document.querySelector('input[name = "video"]').addEventListener('change', function valid() {
+					// create url to use as the src of the video
+					var fileURL = URL.createObjectURL(this.files[0]);
 
-						vid.src = fileURL;
-						// wait for duration to change from NaN to the actual duration
+					vid.src = fileURL;
+					// wait for duration to change from NaN to the actual duration
 
-						vid.ondurationchange = function () {
+					vid.ondurationchange = function () {
 
-							if ((this.duration) > 900) {
-								alert("Video must be less than 15 minutes");
-								window.location.reload();
-							}
-						};
-					});
-				</script>
-								
-<!-- {{ form.as_p }} -->
-		<p>
-			<button type="submit" onclick="valid()">Upload Video </button>
-		</p>
-	</form>
-</fieldset> 	
+						if ((this.duration) > 900) {
+							alert("Video must not be more than 15 minutes");
+							window.location.reload();
+						}
+					};
+				});
+			</script>	
 
-{% endblock content %}
+			<p><input class="submit" type="submit" value="Upload Video"></p>
+		</form>
+
+	</div>
+</body>
+
+</html>
