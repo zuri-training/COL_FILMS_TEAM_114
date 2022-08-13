@@ -219,7 +219,7 @@
                         <li><button>Sign In</button></li>
                     </form>
                 
-                    <form action="{% url 'accounts:login' %}" method="post">
+                    <form action="{% url 'accounts:register' %}" method="post">
                         {% csrf_token %}
                         <li><button style="background-color: #EEEEEE; color:#00A9A5">Sign Up</button></li>
                         </li>
