@@ -157,7 +157,7 @@ nav .rightnav .icons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 30px;
 }
 .side-video-list .small-image{
     display: flex;
@@ -183,13 +183,21 @@ nav .rightnav .icons {
     order: 0;
     align-self: stretch;
     flex-grow: 0;
+    margin-top: 10px;
+
 }
 .vid-info a{
     color: #504f4f;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem
-
+    font-size: 0.95rem;
+    margin-bottom: 45px;
+}
+.vid-info p{
+    margin-bottom: 10px;
+}
+.sneak-peaks{
+    margin-top: 40px;
 }
 .sneak-peaks-text{
     padding: 1rem;
@@ -346,6 +354,27 @@ nav .rightnav .icons {
     background: #00A9A5;
     border-radius: 8px;
     border: none;
+}
+.general{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+    padding-top: 6%;
+    align-items: center;
+}
+.sort-by{
+    color: #424242;
+    font-size: 20px;
+    
+}
+.sort-by-a{
+    color: #504f4f;
+    align-items: center;
+    display: flex;
+    gap: 4px;
+}
+.general p{
+    margin-bottom: 0%;
 }
    
 .old-comment{
