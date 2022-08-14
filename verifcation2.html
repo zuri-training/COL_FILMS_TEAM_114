@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Page</title>
+    <title>Verification Email Page</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
@@ -159,7 +159,7 @@
             background-color: #D9D9D9;
             border-radius: 30px;
         }
-        .prog1 {
+        .prog2 {
             background-color: var(--bkg);
         }
         .verify {
@@ -187,7 +187,7 @@
         .inputs {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 50px;
         }
         .inputs label {
             display: flex;
@@ -198,16 +198,18 @@
             line-height: 24px;
         }
         .inputs input {
-            width: 390px;
+            width: 685px;
             padding: 12px;
             border: 1px solid #737171;
             border-radius: 4px;
         }
         .verify .submit {
+            width: 335px;
+            margin: 0 auto;
             padding: 14px 28px;
             border: none;
-            background-color: var(--bkg);
-            color: var(--txt);
+            background-color: #D9D9D9;;
+            color: #737171;;
             font-family: var(--font1);
             font-size: 16px;
             font-weight: 700;
@@ -250,16 +252,13 @@
         </section>
         <section class="verify">
             <div class="texts">
-                <h2>Your free account is almost<br> ready</h2>
-                <p>We'll be needing a few more details to verify that<br>
-                 you are a student of an accredited university</p>
+                <h2>Verification method</h2>
+                <p>To verify your identiy,
+                     we will send a code to<br> your student email.</p>
             </div>
             <div class="inputs">
-                <label for="School_Name">What school do you attend?<input type="text" id="school_name" name="username" required></label>
-                <label for="Major">What is your course of study?<input type="text" id="major" name="username" required></label>
-                <label for="School_Level">What year are you in?<input type="school_level" id="username" name="username" required></label>
-                <label for="Grad_date">Expected graduation year?<input type="date" id="grad_date" name="username" value="" name="" id="" required></label>
-                <input class="submit" type="submit" value="Next">
+                <label for="student_email">Your student email<input type="text" id="student_email" name="student_email" required></label>
+                <input class="submit" type="submit" value="Receive verification code">
             </div>
         </section>
     </main>
