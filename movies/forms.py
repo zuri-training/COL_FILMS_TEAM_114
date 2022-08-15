@@ -21,7 +21,7 @@ class MovieCommentForm(forms.ModelForm):
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=150)    
+    last_name = forms.CharField(max_length=150)  
     
     class Meta:
         model = User
@@ -41,4 +41,4 @@ class CustomUserCreationForm(UserCreationForm):
 class UserInfoForm(forms.ModelForm):  
     class Meta:
         model = UserInfo
-        fields = {'user_type' : '','school': '', 'avatar': ''} 
+        fields = {'gender' : '', 'user_type' : '','school': '', 'avatar': ''} 
