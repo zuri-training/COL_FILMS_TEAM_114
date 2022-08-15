@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['team114.herokuapp.com']
 
 # Application definition
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,18 +137,17 @@ STATICFILES_DIRS=[
     BASE_DIR/'static'
 ]
 
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 # Auth Settings 
 # AUTH_USER_MODEL = 'movies.CustomUser'
 
-LOGIN_REDIRECT_URL = "movies:index"
+LOGIN_REDIRECT_URL = "movies:all_movies"
 
 LOGOUT_REDIRECT_URL = "movies:index"
 
-
-GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
-}
-
-
-LOGIN_REDIRECT_URL = "movies:all_movies"
+#Thius is the 
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
