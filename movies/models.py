@@ -9,14 +9,25 @@ ACCOUNT_TYPE = (
     ('Student', 'Student')
 )
 
+GENDER_CHOICE = (
+    ('','select'),
+    ('male','Male'),
+    ('female', 'Female')
+)
+
+
 class UserInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     user_type = models.CharField(max_length=10)
 
+    # user_type = models.CharField(choices=ACCOUNT_TYPE, max_length=10)
+
     school = models.CharField(max_length=100,null=True, blank=True, verbose_name="school")
 
     gender = models.CharField(max_length=10)
+
+    # gender = models.CharField(choices=GENDER_CHOICE, default="", max_length=10)
 
     #these are extended models features
     #user_type = models.CharField(max_length=6,null=True)
