@@ -152,3 +152,6 @@ GRAPH_MODELS = {
 
 
 LOGIN_REDIRECT_URL = "movies:all_movies"
+
+# Activate Django-Heroku
+django_heroku_settings(locals())
