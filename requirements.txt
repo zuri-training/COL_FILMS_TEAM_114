@@ -10,17 +10,9 @@ defusedxml==0.7.1
 dj-database-url==1.0.0
 dj-static==0.0.6
 Django
-django-allauth==0.51.0
-django-extensions==3.2.0
-graphviz==0.20.1
 gunicorn==20.1.0
 idna==3.3
-imageio==2.19.5
-imageio-ffmpeg==0.4.7
-moviepy==1.0.3
-numpy==1.23.1
 oauthlib==3.2.0
-opencv-python==4.6.0.66
 Pillow==9.2.0
 proglog==0.1.10
 psycopg2==2.9.3
