@@ -29,10 +29,7 @@ from decouple import config
 # DEBUG = True
 DEBUG =  False
 
-# os.environ['SECRET_KEY']
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS')
-
-ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
 
@@ -156,5 +153,4 @@ LOGOUT_REDIRECT_URL = "movies:index"
 
 
 django_heroku.settings(locals())
-LOGIN_REDIRECT_URL = "movies:all_movies"
 

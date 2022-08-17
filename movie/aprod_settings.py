@@ -4,9 +4,8 @@ from .settings import *
 
 import django_heroku
 
-DEBUG = os.getenv('DEBUG')
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', SECRET_KEY)
-# adjust to the URL of your Heroku app
+DEBUG = False
+SECRET_KEY = []
 ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
 
 # Activate Django-Heroku.
