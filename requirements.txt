@@ -9,7 +9,7 @@ decorator==4.4.2
 defusedxml==0.7.1
 dj-database-url==1.0.0
 dj-static==0.0.6
-Django==4.0.6
+Django
 django-allauth==0.51.0
 django-extensions==3.2.0
 graphviz==0.20.1
@@ -43,10 +43,8 @@ static3==0.7.0
 tqdm==4.64.0
 tzdata==2022.1
 urllib3==1.26.10
-=======
 distlib==0.3.5
 dj-database-url==1.0.0
-Django==4.1
 django-heroku==0.3.1
 filelock==3.7.1
 gunicorn==20.1.0
