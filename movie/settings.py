@@ -12,27 +12,14 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import django_heroku
 from pathlib import Path
 import os
-from decouple import config
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY = config('SECRET_KEY')
-
-# DEBUG = config('DEBUG')
-
-# SECURITY WARNING: keep the secret key used in production secret!
-
-# SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-ALLOWED_HOSTS = []
-
-if os.environ.get('DEBUG') == 'TRUE':
-    DEBUG = True
-elif os.environ.get('DEBUG') == 'FALSE':
-    DEBUG = False
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=True, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 INSTALLED_APPS = [
     'movies',
