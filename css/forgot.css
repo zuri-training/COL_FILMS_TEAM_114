@@ -1,0 +1,227 @@
+
+/* Imported the font "Inter" from the google font library. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* To make it easier to access certain values and change them globally,
+            a root style system has been created. Mainly for colors, fonts, etc. */
+:root {
+  --bkg: #00a9a5;
+  --txt: #fff;
+  --txt2: #424242;
+  --txt3: #777777;
+  --font1: "Inter", sans-serif;
+}
+
+body {
+  width: 100%;
+  font-family: Inter;
+}
+
+/* The image and the container of the Forgot Password form are side by side,
+therefore a Flex-box Display Method was used to place both items side by side according to the design specification. */
+
+
+.forgot-password-section {
+    display: flex;    
+    flex-direction: row; /* to place flex-items horizontally*/
+}
+
+/*styling of the Forgot password box*/
+
+.forgot-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 104px;
+    gap: 32px;
+    width: 595px;
+    height: 570px;
+    border: 2px solid var(--bkg);
+    border-radius: 40px;
+    margin: 70px 113px 10px 132px;
+}
+
+/* styling of the logo on the page  */
+
+.fplogo {
+    Width: 105px;
+    Height: 31.62px;
+    Top: 74px;
+    Left: 245px;  
+}
+
+.forgot-password h2 {
+    font-weight: 700;
+    line-height: 41.15px;
+    font-size: 34px;
+    color: var(--bkg);
+    padding-bottom: 0px;
+}
+
+.textfp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--txt3);
+}
+
+.forgot-password p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.fpemail {
+    position: relative;
+    right: -4%;
+}
+
+.fpemail p {
+  color: var(--txt2);
+}
+.fpemail input {
+    width: 240px;
+    height: 48px;
+    color: var(--txt3); 
+    padding: 12px;
+    border: 1px solid #5975FF;
+    border-radius: 4px;
+}
+
+.fprequest button {
+  position: relative;
+  left: 5%;
+  border-radius: 8px;
+  border: none;
+  padding: 14px 28px;
+  background-color: var(--bkg);
+  color: var(--txt);
+  font-weight: 700;
+  height: 52px;
+  text-align: center;
+  width: 234px;
+}
+
+.remember p{
+  color: var(--txt3);
+  font-size: 14px;
+  line-height: 24px;
+  width:180px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.remember span {
+  font-size: 14px;
+  width: 91px;
+  height: 24px;
+  position: relative;
+  left: 44px;
+  padding:0px;
+}
+
+.remember a {
+  text-decoration: none;
+  color: var(--bkg);
+}
+
+.mbfpimg {
+  display: none;
+}
+
+
+/* A seperate div was used to style the Help Center under the Forgot Password Box */
+
+.help-privacy-terms {
+  position: absolute;
+  top: 660px;
+  left: 296.5px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--txt2);
+  text-decoration: none;
+}
+.help-privacy-terms a {
+  text-decoration: none;
+  color: var(--txt2)
+}
+/* mobile responsiveness using screen and max-width */
+
+@media screen and (max-width: 428px)  {
+
+/* The Design Specification had a column view for the Flexbox*/
+/* Flex-item 2 had the 1st order in the Flex-box for this screen */
+/* The Desktop image and the logo were not displayed in this Design. */
+body {
+  overflow-y: hidden;
+}
+  .forgot-password-section {
+    flex-direction: column-reverse; 
+  }
+
+  .img1 {
+    display: none; 
+  }
+
+  .mbfpimg {
+    display:block;
+    width: 428px;
+    height: 129.95px;
+  }
+
+  .forgot-password {
+    position: absolute;
+    top: 195px;
+    width: 334px;
+    height: 441px;
+    margin: 0px 47px;
+    border: 1px solid #CCEEED;
+    border-radius: 20px;
+    background: var(--txt);
+  }
+
+  .fplogo {
+    display: none; 
+  }
+
+  .textfp {
+    position: absolute;
+    top: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 10px;
+  }
+
+  .textfp h2 {
+    font-size: 22px;
+    line-height: 29px;
+    width: 270px;
+  }
+
+  .textfp p {
+    width: 231px;
+    height: 48px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .fpemail {
+    margin-top: 32px;
+  }
+
+  .help-privacy-terms {
+    top: 762px;
+    left: 71px;
+    text-decoration: none;
+  }
+  
+}

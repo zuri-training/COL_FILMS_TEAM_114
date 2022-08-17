@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+
+h1{
+    font-style: normal;
+    margin-bottom: 5px;
+}
+
+.split-screen{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+}
+
+.logo{
+    text-align: center;
+    color:#00A9A5; 
+    width: 60px;
+    margin: auto;
+    font-weight: bolder;
+}
+
+#versity{
+    border-bottom:2px solid #00A9A5;
+    padding-bottom: 3px;
+}
+
+.copy{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.copy > p{
+    font-size: 10px;
+}
+
+label{
+     display: block;
+     font-size: 10px;
+}
+
+/* to STYLE THE REMEBER ME AND FORGOT PASSWORD */
+.remember{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Switch the default display for label to inline block */
+.remember label{
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.remember a{
+    color: #00A9A5;
+    font-size: 10px;
+}
+
+.email{
+    margin: auto;
+}
+
+.loginframe{
+    border: 2px solid #CCEEED;
+    border-radius: 40px;
+    padding: 40px 40px;
+}
+
+.left form {
+    width: 334px;
+}
+
+.contentbx
+{
+    /* border: 1px solid red; */
+    /* width: 50%;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgbx > div,.imgbx img{
+    width: 100px;
+    height: 100px;
+}
+
+/* GRID FOR THE IMAGE CONTAINER */
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap:2px;
+    /* margin: auto; */
+    /* border: 1px solid red; */
+  }
+  .grid-item {
+    /* background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8); */
+  }
+
+
+  /* END ADDED */
+
+.img1, .img1 > img
+{
+    border-radius: 0px 50px 0px 0px;
+
+}
+
+.img2, .img2 > img
+{
+    border-radius: 50px 0px 0px 0px;
+}
+
+.img3, .img3 > img
+{
+    border-radius: 50px;
+}
+
+.img4, .img4 > img
+{
+    border-radius: 50px;
+}
+
+.img5, .img5 > img
+{
+    border-radius: 0px 50px;
+}
+
+.img6, .img6 > img
+{
+    border-radius: 50px;
+}
+
+.color1
+{
+    background-color: #5975FF;
+    border-radius: 0px 0px 0px 70px;
+}
+
+.color2
+{
+    background-color: rgba(30, 191, 3, 0.8);
+    border-radius: 70px 0px 0px 70px;
+}
+
+.color3,.color6
+{
+    background-color:#F9851B;
+    border-radius: 0px 40px;
+}
+
+.color4
+{
+    background-color: #005452;
+    border-radius: 70px 0px 0px 70px;
+}
+
+.color5
+{
+    background-color:#00A9A5;
+    border-radius: 70px 0px 0px 70px;
+}
+
+input[type=email], input[type=password]{
+    width: 100%;
+    border: 1px solid #939393;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* ADDED */
+form{
+    color: #939393;
+    width: 250px;
+}
+
+.mb-3{
+    margin-bottom: 3px;
+}
+
+.mb-15{
+    margin-bottom: 15px;
+}
+
+
+.btn{
+    width: 100%;
+    padding: 8px;
+    background-color: #00A9A5;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.no-account{
+    font-size: 10px;
+}
+
+.no-account a{
+    color: #00A9A5
+}
+
+.mobile{
+    display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width:400px) {
+    body{
+        display: flex;
+        height: auto;
+        font-size: 1.2em;
+    }
+
+    .imgbx{
+        display: none;
+    }
+
+    .split-screen{
+        flex-direction: column;
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .loginframe{
+        padding: 40px 40px 80px 40px;
+        position: absolute;
+        top: 150px;
+        background-color: #FFFFFF;
+    }
+
+    .mobile{
+        position: relative;
+        display: grid;
+    }
+
+    .grid-container {
+        z-index: -1; /* this container should be behind */
+        gap:1px;
+        /* border: 1px solid red; */
+      }
+      .grid-item {
+
+        /* background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8); */
+      }
+
+      .color2, .color3{
+        width: 90px;
+      }
+}
