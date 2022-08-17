@@ -69,6 +69,10 @@
                                     src="{% static 'assets/Watch page/share-line.png' %}">share</a>
                             <a href=""><img src="{% static 'assets/Watch page/hq-line.png' %}">Video
                                 quality</a>
+                            {% if movie.author == request.user %}
+                            <a href="{% url 'movies:delete_movie' movie.id %}">Delete</a>
+                            {% endif %}
+                            
                             <a href=""><img
                                     src="{% static 'assets/Watch page/heart-add-line.png' %}">
                                     {% if fav %}
