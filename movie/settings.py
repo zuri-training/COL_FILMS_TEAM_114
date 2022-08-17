@@ -18,11 +18,8 @@ from decouple import config, Csv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS')
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
-
 
 
 INSTALLED_APPS = [
@@ -142,7 +139,5 @@ LOGOUT_REDIRECT_URL = "movies:index"
 # import dj_database_url 
 # prod_db  =  dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(prod_db)
-
-
 django_heroku.settings(locals())
 
