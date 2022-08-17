@@ -52,7 +52,7 @@ def register(request):
             login(request,new_user)
             return redirect('movies:index')
         else:
-            return HttpResponse('Invalid Inputs!')
+            return redirect('accounts:register')
 
     # Display Form filled or invalid
     context = {'form': form, 'user_info_form': user_info_form}
