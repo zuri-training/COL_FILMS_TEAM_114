@@ -1,0 +1,3 @@
+# SECRET_KEY=django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0
+# DEBUG=True
+# ALLOWED_HOSTS=.localhost, .varsityvine.herokuapp.com
