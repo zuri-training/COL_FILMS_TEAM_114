@@ -55,6 +55,6 @@ python-decouple==3.6
 python-dotenv==0.20.0
 pytz==2022.2.1
 sqlparse==0.4.2
-tzdata==2022.2
+tzdata
 virtualenv==20.16.2
 virtualenv-clone==0.5.7
