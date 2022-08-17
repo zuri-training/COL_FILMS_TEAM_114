@@ -2,6 +2,7 @@
 .Python
 venv/
 env/
+.env
 *.sqlite3
 .idea/
 # Project asset folders

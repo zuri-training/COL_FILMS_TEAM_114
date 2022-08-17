@@ -12,25 +12,16 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import django_heroku
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = config('SECRET_KEY')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['team114.herokuapp.com', '127.0.0.1']
-
-# Application definition
 
 INSTALLED_APPS = [
 
@@ -86,20 +77,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'ciba',
-#         }
-#     }
-
-
-
-
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
