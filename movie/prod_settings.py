@@ -5,8 +5,8 @@ from .settings import *
 import django_heroku
 from decouple import config, Csv
 
-DEBUG = False
-# DEBUG = config('DEBUG')
+
+DEBUG = config('DEBUG')
 SECRET_KEY = config('SECRET_KEY')
 
 # adjust to the URL of your Heroku app
