@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
 
-from decouple import config
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG =  False
+ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['*']
+if os.environ.get('DEBUG') == 'TRUE':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'FALSE':
+    DEBUG = False
 
 INSTALLED_APPS = [
 
