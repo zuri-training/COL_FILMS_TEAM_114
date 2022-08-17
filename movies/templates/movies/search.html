@@ -340,7 +340,11 @@
                                     </a>
                                 <div class="card-body">
                                     <div class="thumbnail">
+                                        {% if movie.author.userinfo.avatar %}
                                         <img img src="{{ movie.author.userinfo.avatar.url }}" alt="">
+                                        {% else %}
+                                        <img img src="{% static 'assets/dummy.png' %}" alt="">
+                                        {% endif %}
                                     </div>
                                     <div class="video-desc">
                                         <a href="{% url 'movies:view_movie' movie.id %}"><h3 class="card-title">{{movie.title}}</h3></a>
