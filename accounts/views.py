@@ -51,9 +51,7 @@ def register(request):
 
             login(request,new_user)
             return redirect('movies:index')
-
-
-        except ValueError():
+        except:
             return HttpResponse('Invalid Inputs!')
 
     # Display Form filled or invalid
