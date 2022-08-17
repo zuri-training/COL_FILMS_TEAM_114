@@ -1,3 +1,21 @@
+# Distribution / packaging
+.Python
+venv/
+env/
+*.sqlite3
+.idea/
+# Project asset folders
+media/
+# Database
+db.sqlite3
+# Editor directories and files
+.idea
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

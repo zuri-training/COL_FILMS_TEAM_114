@@ -30,6 +30,7 @@ PyJWT==2.4.0
 pymediainfo==5.1.0
 pyparsing==3.0.9
 pystache==0.6.0
+python-decouple==3.6
 python3-openid==3.2.0
 ranges==0.3
 requests==2.28.1
