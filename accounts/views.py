@@ -40,18 +40,18 @@ def register(request):
         form = CustomUserCreationForm(data=request.POST)
         user_info_form = UserInfoForm(request.POST, request.FILES or None)
 
-        try:
-            if form.is_valid and user_info_form.is_valid():
-                new_user = form.save()
 
-                profile = user_info_form.save(commit=False)
-                profile.user = new_user
-                profile.save()            
+        if form.is_valid and user_info_form.is_valid():
+            new_user = form.save()
+
+            profile = user_info_form.save(commit=False)
+            profile.user = new_user
+            profile.save()            
 
 
             login(request,new_user)
             return redirect('movies:index')
-        except:
+        else:
             return HttpResponse('Invalid Inputs!')
 
     # Display Form filled or invalid
