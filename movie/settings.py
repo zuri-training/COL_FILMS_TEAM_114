@@ -30,9 +30,9 @@ from decouple import config
 DEBUG =  False
 
 # os.environ['SECRET_KEY']
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
-# ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
+ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
 
 INSTALLED_APPS = [
 
