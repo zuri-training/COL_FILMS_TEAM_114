@@ -22,7 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = config('DEBUG')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
+
+# SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = []
 
@@ -32,7 +35,6 @@ elif os.environ.get('DEBUG') == 'FALSE':
     DEBUG = False
 
 INSTALLED_APPS = [
-
     'movies',
     'accounts',
 
