@@ -3,19 +3,11 @@
 from .settings import *
 
 import django_heroku
-from decouple import config, Csv
 
-
-# DEBUG = config('DEBUG')
-# SECRET_KEY = config('SECRET_KEY')
-from decouple import config
-# DEBUG = config('DEBUG')
-
-DEBUG = False
-SECRET_KEY = config('SECRET_KEY')
-
+DEBUG = os.getenv('DEBUG')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', SECRET_KEY)
 # adjust to the URL of your Heroku app
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
