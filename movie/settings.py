@@ -17,9 +17,9 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG')
+# DEBUG = config('DEBUG')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
@@ -30,8 +30,9 @@ from decouple import config
 DEBUG =  False
 
 # os.environ['SECRET_KEY']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
-ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
+# ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
 
 INSTALLED_APPS = [
 
