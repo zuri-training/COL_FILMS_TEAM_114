@@ -1,2 +1,2 @@
-release: python manage.py migrate --no-input
-web: gunicorn movie.wsgi
+web: gunicorn movie.wsgi --log-file -
+
