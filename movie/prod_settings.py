@@ -6,10 +6,8 @@ import django_heroku
 from decouple import config, Csv
 
 
-DEBUG = config('DEBUG')
-SECRET_KEY = config('SECRET_KEY')
-
-
+# DEBUG = config('DEBUG')
+# SECRET_KEY = config('SECRET_KEY')
 from decouple import config
 # DEBUG = config('DEBUG')
 
