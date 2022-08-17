@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
-# ALLOWED_HOSTS = ['team114.herokuapp.com', '127.0.0.1']
+# ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
+ALLOWED_HOSTS = ['varsityvine.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -94,13 +94,6 @@ DATABASES = {
 #         }
 #     }
 
-
-
-
-
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -162,10 +155,9 @@ LOGIN_REDIRECT_URL = "movies:all_movies"
 LOGOUT_REDIRECT_URL = "movies:index"
 
 # #Thius is the 
-# import dj_database_url 
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
-
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 django_heroku.settings(locals())
 LOGIN_REDIRECT_URL = "movies:all_movies"
