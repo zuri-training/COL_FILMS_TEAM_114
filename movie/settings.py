@@ -21,7 +21,17 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-7wjn62oc!1qm#eb&6(aqh4)hu@cc(h#^b8c7ls+2c7x)34%f#0'
+
+from decouple import config
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+DEBUG =  False
+
+# os.environ['SECRET_KEY']
+
+ALLOWED_HOSTS = ['varsityvine.herokuapp.com']
 
 INSTALLED_APPS = [
 
