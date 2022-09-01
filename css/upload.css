@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Inter', sans-serif;
+    box-sizing: border-box;
+}
+body{
+   width: 100%;
+}
+.butt2 {
+    border-radius: 5px;
+    background-color: rgb(24, 129, 129);
+    border: none;
+    color: white;
+   
+    font-size: 20px;
+    padding: 10px;
+    width: 170px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 55em;
+    bottom: 10px;
+  }
+  
+  .butt2 {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .butt2 :after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .butt2:hover  {
+    padding-right: 25px;
+  }
+  
+  .butt2:hover .butt2:after {
+    opacity: 1;
+    right: 0;
+  }
+  h2{
+    margin-left: 15em;
+  }
+table {
+    border: 3px solid  black ;
+    border-collapse: collapse;
+    width: 70%;
+    border-radius: 1px;
+    margin-left: auto;
+    margin-right: 100px;
+    
+  }
+  
+  td,th {
+    border: 1px solid  transparent ;
+    text-align: left;
+    padding: 8px;
+  
+    border-bottom: 1px solid #ddd;
+  }
+  th{
+    border: 1px solid #ddd;
+    width: 8.75;
+   
+  }
