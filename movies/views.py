@@ -68,7 +68,7 @@ def delete_movie(request, movie_id):
     """Edit an exisiting comment."""
     movie = Movie.objects.get(id=movie_id)
     #check movie belongs to the current user
-    check_comment_owner(movie.author, request.user)
+    #check_comment_owner(movie.author, request.user)
     movie.delete()
     return redirect('movies:all_movies')
 

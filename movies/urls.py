@@ -45,5 +45,4 @@ urlpatterns = [
     path('view_movie/<int:movie_id>/new_comment/', views.new_comment, name='new_comment'),
 
     path('edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
-
 ]

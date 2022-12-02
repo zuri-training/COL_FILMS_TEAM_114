@@ -26,6 +26,8 @@ from movies.models import Movie
 #     # Display Form filled or invalid
 #     context = {'form': form}
 #     return render(request, 'registration/register.html', context)
+from django.http import HttpResponse
+
 
 def register(request):
     """Register a new user"""
@@ -38,6 +40,7 @@ def register(request):
         form = CustomUserCreationForm(data=request.POST)
         user_info_form = UserInfoForm(request.POST, request.FILES or None)
 
+
         if form.is_valid and user_info_form.is_valid():
             new_user = form.save()
 
@@ -45,10 +48,11 @@ def register(request):
             profile.user = new_user
             profile.save()            
 
-            #Login the user in and redirect to home page
 
             login(request,new_user)
             return redirect('movies:index')
+        else:
+            return redirect('accounts:register')
 
     # Display Form filled or invalid
     context = {'form': form, 'user_info_form': user_info_form}

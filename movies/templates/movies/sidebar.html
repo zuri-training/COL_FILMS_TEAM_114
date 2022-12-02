@@ -72,8 +72,9 @@
             <li><a href="{% url 'movies:index' %}"><img class="icons" src="{% static 'assets/home3.svg' %}"
                         alt="">Home</a></li>
             <li><a href="{% url 'movies:all_movies' %}"><img class="icons" src="{% static 'assets/library.svg' %} " alt="">Library</a></li>
-            <li><a href="{% url 'movies:new_movie' %}"><img class="icons" src="{% static 'assets/myvideo.svg' %}" alt="">Upload 
-                    Video</a></li>
+            {% if user.userinfo.user_type == 'Student' %}
+            <li><a href="{% url 'movies:new_movie' %}"><img class="icons" src="{% static 'assets/myvideo.svg' %}" alt="">Upload Video</a></li>
+            {% endif %}
             <hr>
             <li><a href="{% url 'accounts:profile' %}"><img class="icons" src="{% static 'assets/settings.svg' %}" alt="">Settings</a></li>
             <li><a href="#"><img class="icons" src="{% static 'assets/help.svg' %}" alt="">Help</a>
